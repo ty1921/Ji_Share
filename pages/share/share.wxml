@@ -1,0 +1,12 @@
+<web-view src="http://62.234.50.235/back.pdf">
+  <cover-view class="tool-bar" wx:if="showNav"> 
+      <cover-image src="/static/1.jpg" class="nav-bg"></cover-image>
+      <cover-view class="tool-btn">
+          <cover-view>我的</cover-view>
+          <cover-view>订单</cover-view>
+      </cover-view>
+  </cover-view> 
+
+</web-view>
+
+ 

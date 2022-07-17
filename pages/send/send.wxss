@@ -1,0 +1,19 @@
+/* pages/send/send.wxss */
+
+.files, .pics, .submit_view{
+  width: 92%;
+  height: 150rpx;
+  margin: 3%;
+  background: chocolate;
+}
+
+.pics{
+  height: 300rpx;
+}
+
+.submit_view2{
+  width: 80%;
+  position: fixed;
+  bottom: 10%;
+  left: 10%;
+}

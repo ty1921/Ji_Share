@@ -1,0 +1,54 @@
+<!--pages/send/send.wxml-->
+ 
+<view>
+
+
+<view class="title"> 上传发货单 </view>
+ 
+<view class="progress-box">
+  <van-progress
+    percentage="33"
+    pivot-text="33%"
+    pivot-color="#7232dd"
+    color="linear-gradient(to right, #be99ff, #7232dd)"
+  />
+</view> 
+
+<!-- 指向微信公众平台首页的web-view -->
+<!-- <web-view src="https://mp.weixin.qq.com/"></web-view> -->
+
+
+<view class="files">
+{{excel}} 
+  <button bindtap="upload">请选择Excel文件</button>
+</view>
+
+
+<view class="pics">
+  {{pics}} 
+  <!-- <button bindtap="upload">上传图片（最多4张）</button> -->
+  <van-uploader 
+      file-list="{{ fileList }}" 
+      accept="image"
+      use-before-read
+      bind:before-read="beforeRead"
+      bind:after-read="afterRead" 
+      deletable="{{ true }}" 
+      max-count="4" 
+  />
+
+</view>
+
+
+<van-button type="default">默认按钮</van-button>
+<van-button type="primary">主要按钮</van-button>
+<van-button type="info">信息按钮</van-button>
+<van-button type="warning">警告按钮</van-button>
+<van-button type="danger">危险按钮</van-button>
+
+
+<view class="submit_view2">
+  <button bindtap="">提交</button>
+</view>
+
+</view>
