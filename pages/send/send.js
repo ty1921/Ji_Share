@@ -5,12 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    excel:'尚未选择',
+    excel:'',
+    select_desc:'请选择Excel文件',
     progress:0,
+    progress_desc:' 上传Excel ',
+    progress:0,
+    active:0,
     images: [],
     count: 3,
     addedCount: 0,
     fileList: [
+      {
+        url: 'https://img.yzcdn.cn/vant/leaf.jpg',
+        name: '图片1',
+      },
       {
         url: 'https://img.yzcdn.cn/vant/leaf.jpg',
         name: '图片1',
@@ -24,6 +32,20 @@ Page({
         deletable: true,
       },
     ], 
+    steps: [
+      {
+        text: '①',
+        desc: '选择EXCEL',
+      },
+      {
+        text: '②（可选）',
+        desc: '上传照片',
+      },
+      {
+        text: '③',
+        desc: '完成发货',
+      },
+    ],
   },
 
   /**
@@ -47,7 +69,10 @@ Page({
    
         that.setData({
           excel:res.tempFiles[0].name,
-          progress:30,
+          progress:100,
+          progress_desc:' 准备发货 ',
+          select_desc:'重新选择Excel文件',
+          active: 1,
         })
         
         console.log('本次选择的文件是=',that.data.excel)

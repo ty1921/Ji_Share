@@ -7,11 +7,15 @@
  
 <view class="progress-box">
   <van-progress
-    percentage="33"
-    pivot-text="33%"
+    percentage="{{ progress }}"
+    pivot-text="{{ progress_desc }}"
+    stroke-width="18"
     pivot-color="#7232dd"
     color="linear-gradient(to right, #be99ff, #7232dd)"
   />
+
+  <van-steps steps="{{ steps }}" active="{{ active }}" />
+
 </view> 
 
 <!-- 指向微信公众平台首页的web-view -->
@@ -20,7 +24,8 @@
 
 <view class="files">
 {{excel}} 
-  <button bindtap="upload">请选择Excel文件</button>
+  <!-- <button bindtap="upload">请选择Excel文件</button> -->
+  <van-button type="primary" bindtap="upload">{{ select_desc }}</van-button>
 </view>
 
 
@@ -39,16 +44,11 @@
 
 </view>
 
-
-<van-button type="default">默认按钮</van-button>
-<van-button type="primary">主要按钮</van-button>
-<van-button type="info">信息按钮</van-button>
-<van-button type="warning">警告按钮</van-button>
-<van-button type="danger">危险按钮</van-button>
+ 
 
 
 <view class="submit_view2">
-  <button bindtap="">提交</button>
+  <van-button type="default"  >发 货</van-button>
 </view>
 
 </view>

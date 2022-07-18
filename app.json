@@ -25,7 +25,8 @@
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-divider": "@vant/weapp/divider/index",
     "van-progress": "@vant/weapp/progress/index",
-    "van-share-sheet": "@vant/weapp/share-sheet/index"
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-steps": "@vant/weapp/steps/index"
   }
  
 }

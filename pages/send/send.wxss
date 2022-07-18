@@ -1,14 +1,21 @@
 /* pages/send/send.wxss */
 
 .files, .pics, .submit_view{
-  width: 92%;
+  width: 90%;
   height: 150rpx;
   margin: 3%;
-  background: chocolate;
+  background: #d1c4d68a;
+  padding: 2%;
+  border-radius: 15rpx;
 }
 
+.progress-box{
+  padding: 50rpx 25rpx;
+}
+
+
 .pics{
-  height: 300rpx;
+  height: 350rpx;
 }
 
 .submit_view2{
