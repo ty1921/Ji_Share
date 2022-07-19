@@ -10,7 +10,7 @@
 }
 
 .progress-box{
-  padding: 50rpx 25rpx;
+  padding: 50rpx 25rpx 5rpx 25rpx;
 }
 
 
@@ -24,3 +24,5 @@
   bottom: 10%;
   left: 10%;
 }
+
+ 

@@ -55,6 +55,7 @@ Page({
     
   },
   upload(){
+    console.log('点击按钮')
     let that =this    
     wx.chooseMessageFile({
       count: 1,

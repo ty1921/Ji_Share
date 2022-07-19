@@ -1,4 +1,4 @@
-<web-view src="http://62.234.50.235/back.pdf">
+<!-- <web-view src="http://62.234.50.235/back.pdf">
   <cover-view class="tool-bar" wx:if="showNav"> 
       <cover-image src="/static/1.jpg" class="nav-bg"></cover-image>
       <cover-view class="tool-btn">
@@ -7,6 +7,27 @@
       </cover-view>
   </cover-view> 
 
-</web-view>
+</web-view> -->
+
+
+<view style="font-size: 50px;color:red;">
+这里是分享测试
+</view>
+
+
+<view style="font-size: 30px;color:blue;">
+图片就是页面内容的小截图
+</view>
 
  
+<button bindtap="onClick">显示分享面板</button>
+
+
+<van-share-sheet
+  show="{{ showShare }}"
+  title="立即分享给收货方"
+  description="对方会直接看到发货单的详情"
+  options="{{ options }}"
+  bind:select="onSelect"
+  bind:close="onClose"
+/>

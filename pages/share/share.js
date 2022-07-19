@@ -6,6 +6,14 @@ Page({
    */
   data: {
         showNav: false, // 默认不显示
+        showShare: false,
+        options: [
+        { name: '微信', icon: 'wechat', openType: 'share' },
+        // { name: '微博', icon: 'weibo' },
+        { name: '复制链接', icon: 'link' },
+        // { name: '分享海报', icon: 'poster' },
+        { name: '二维码', icon: 'qrcode' },
+        ],
     },
 
 
@@ -41,6 +49,19 @@ Page({
         }
     })
 
+  },
+
+  onClick(event) {
+    this.setData({ showShare: true });
+  },
+
+  onClose() {
+    this.setData({ showShare: false });
+  },
+
+  onSelect(event) {
+    Toast(event.detail.name);
+    this.onClose();
   },
  
 })

@@ -1,8 +1,9 @@
 {
   "pages": [
+    
+    "pages/share/share",
     "pages/send/send",
     "pages/index/index",
-    "pages/share/share",
     "pages/getLogin/getLogin",
     "pages/getAction/getAction",
     "pages/getPDF/getPDF"
