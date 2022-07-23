@@ -1,2 +1,23 @@
-<!--pages/getPDF/getPDF.wxml-->
-<text>pages/getPDF/getPDF.wxml</text>
+<view class="item">
+
+ 
+
+<view class="tips_box">
+    <van-icon name="passed" size="200rpx" color="#57C22D" />    
+    <view class="tips"> 确认收货成功 </view>
+</view>    
+
+<view class="footer">  
+  <view class="flex">
+    <van-button class="btn" type="primary" bindtap="fnView" data-index="1"> 查看PDF </van-button>
+    <van-button class="btn" type="primary" bindtap="fnView" data-index="2"> 下载PDF </van-button>
+  </view>
+
+  <view>
+    <van-button class="btn" block type="primary" bindtap="fnShare" data-index="3"> 分享PDF </van-button>
+
+    <text class="tips2"> 此凭证仅在收货确认后生成，生成后具有电子合同效力。 </text>
+  </view>
+</view>
+<!-- <view>{{id}}</view> -->
+</view>

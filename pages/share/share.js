@@ -5,63 +5,59 @@ Page({
    * 页面的初始数据
    */
   data: {
-        showNav: false, // 默认不显示
-        showShare: false,
-        options: [
-        { name: '微信', icon: 'wechat', openType: 'share' },
-        // { name: '微博', icon: 'weibo' },
-        { name: '复制链接', icon: 'link' },
-        // { name: '分享海报', icon: 'poster' },
-        { name: '二维码', icon: 'qrcode' },
-        ],
-    },
-
+    id:"",
+    path:'',
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-    // setTimeout(() => {
-    //     this.showNav = true;
-    //     this.$apply();
-    // }, 300);
-
-    return
-    wx.downloadFile({ 
-        url: "http://62.234.50.235/back.pdf",//pdf地址 例如：http://**.*****.***/ceshi/demo.pdf
-        filePath: wx.env.USER_DATA_PATH + "/1.pdf",//wx.env.USER_DATA_PATH 文件系统中的用户目录路径 filepath可有可无
-        success(res) {
-            if (res.statusCode === 200) {
-                const tempFilePath = res.filePath//返回的文件临时地址，用于后面打开本地预览所用
-                wx.openDocument({
-                    filePath: tempFilePath,
-                    showMenu: true,
-                    fileType: "pdf",
-                    success: function (res) {} 
-                })
-            } else {
-                showAutoError("协议打开失败，请重新打开");
-            }
-        },
-        fail(res) {
-            showAutoError("协议下载失败")
-        }
+    console.log("options-------------------------")
+    console.log(options)
+    this.setData({
+      id: options.id,
+      path:"/pages/getLogin/getLogin?id=" + this.id,
+      title:"发货成功，请收货！",
     })
-
   },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage:function(res){
+    console.log(res)
+    //转发事件来源 ：from （button:页面内按钮分享  menu:右上角转发菜单）
+    if(res.from == 'button'){//自定义按钮分享
+      //如果form值是button，则target是触发这次转发事件的button，否则为undefined
+      //自定义转发内容
+      var title=""
+      var path=""
+      var jsonStr={id:1,name:"测试的好友"}
 
-  onClick(event) {
-    this.setData({ showShare: true });
-  },
+      
+      
 
-  onClose() {
-    this.setData({ showShare: false });
-  },
-
-  onSelect(event) {
-    Toast(event.detail.name);
-    this.onClose();
-  },
- 
+      return{
+        title: this.title,
+        path: this.path, 
+        success: function(res) {
+          console.log('分享成功')
+        },
+        fail: function(res) {
+          console.log('分享失败')
+        }
+      }
+    }else{//右上角转发菜单
+      return{
+        title:  this.title,
+        path:  this.path,
+        success: function(res) {
+          console.log('分享成功')
+        },
+        fail: function(res) {
+          console.log('分享失败')
+        }
+      }
+    }
+  }
 })

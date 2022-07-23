@@ -20,7 +20,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
     <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo" >发 货</button>
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">test</button>
+    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">test</button> -->
   </view>
 </view>
  

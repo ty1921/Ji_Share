@@ -4,7 +4,8 @@ const host =  'http://192.168.31.158/API/New/';
 const alert = title =>{
   wx.showToast({
     title: title,
-    icon: 'none'
+    icon: 'none',
+    duration: 3500
   })
 }
 const getRequestOptions = options => {

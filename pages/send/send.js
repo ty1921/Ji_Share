@@ -5,10 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,    
+    disabled: true,
+    deletable: true,
     excel:'',
-    select_desc:'请选择Excel文件',
+    path: '',
+    select_desc:'＋上传Excel',
     progress:0,
-    progress_desc:' 上传Excel ',
+    progress_desc:' ＋上传Excel ',
     progress:0,
     active:0,
     images: [],
@@ -29,21 +33,17 @@ Page({
         url: 'http://iph.href.lu/60x60?text=default',
         name: '图片2',
         isImage: true,
-        deletable: true,
       },
     ], 
     steps: [
       {
-        text: '①',
-        desc: '选择EXCEL',
+        text: '① 开始发货',
       },
       {
-        text: '②（可选）',
-        desc: '上传照片',
+        text: '② 选择EXCEL',
       },
       {
-        text: '③',
-        desc: '完成发货',
+        text: '③ 上传照片（可选）',
       },
     ],
   },
@@ -56,6 +56,10 @@ Page({
   },
   upload(){
     console.log('点击按钮')
+    this.setData({
+      loading: true,
+    })
+
     let that =this    
     wx.chooseMessageFile({
       count: 1,
@@ -69,14 +73,19 @@ Page({
         that.data.excel = res.tempFiles[0].name
    
         that.setData({
-          excel:res.tempFiles[0].name,
-          progress:100,
-          progress_desc:' 准备发货 ',
-          select_desc:'重新选择Excel文件',
+          excel:res.tempFiles[0].name,          
+          path: res.tempFiles[0].path,
+          // progress:100,
+          // progress_desc:' 准备发货 ',
+          select_desc:'重新选择',
           active: 1,
+          disabled: false,
+          loading: false, 
         })
         
-        console.log('本次选择的文件是=',that.data.excel)
+        console.log('本次选择的文件是=',that.data.excel, res)
+
+        
       }
     })
   },
@@ -84,21 +93,27 @@ Page({
     const { file } = event.detail;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+      url: 'upload.php', // 仅为示例，非真实的接口地址
       filePath: file.url,
       name: 'file',
       formData: { user: 'test' },
       success(res) {
+        console.log( '上传图片的返回', res )
         // 上传完成需要更新 fileList
         const { fileList = [] } = this.data;
         fileList.push({ ...file, url: res.data });
         this.setData({ fileList });
-      },
+      }, 
     });
   },
   beforeRead(event) {
     const { file, callback } = event.detail;
     callback(file.type === 'image');
   },
+  submit(){
+    this.setData({
+      loading: true,
+    })
+  }
 
 })

@@ -1,33 +1,28 @@
-<!-- <web-view src="http://62.234.50.235/back.pdf">
-  <cover-view class="tool-bar" wx:if="showNav"> 
-      <cover-image src="/static/1.jpg" class="nav-bg"></cover-image>
-      <cover-view class="tool-btn">
-          <cover-view>我的</cover-view>
-          <cover-view>订单</cover-view>
-      </cover-view>
-  </cover-view> 
-
-</web-view> -->
+<view class="item">
 
 
-<view style="font-size: 50px;color:red;">
-这里是分享测试
-</view>
+    <van-row>    
+        <van-col span="24"> 发货编号：080116000369 </van-col>
 
+        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCSCINTURATO P7 ALL SEASON </van-col>        
+        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col> 
 
-<view style="font-size: 30px;color:blue;">
-图片就是页面内容的小截图
-</view>
+        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCS-CINTURATO P7 ALL SEASON </van-col>        
+        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col>
 
+        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCS-CINTURATO P7 ALL SEASON </van-col>        
+        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col>
+    </van-row>
  
-<button bindtap="onClick">显示分享面板</button>
 
-
-<van-share-sheet
-  show="{{ showShare }}"
-  title="立即分享给收货方"
-  description="对方会直接看到发货单的详情"
-  options="{{ options }}"
-  bind:select="onSelect"
-  bind:close="onClose"
-/>
+    <view class="tips_box">
+        <view class="tips"> 发货成功 </view>
+        <van-icon name="passed" size="200rpx" color="#57C22D" />
+    </view>    
+ 
+    <view class="footer"> 
+        <!-- <button class="shareBtn" data-index="2" style="width:600rpx" open-type="share">分享给收货方</button> -->
+        <van-button type="primary" open-type="share" data-index="2"> 分享给收货方 </van-button>
+    </view>
+    <!-- <view>{{id}}</view> -->
+</view>

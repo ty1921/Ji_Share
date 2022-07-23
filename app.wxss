@@ -8,3 +8,19 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.red{
+  color: red;
+}
+
+.green{
+  color: #57C22D;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.right{
+  text-align: right;
+}

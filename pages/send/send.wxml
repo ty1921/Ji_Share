@@ -1,54 +1,52 @@
-<!--pages/send/send.wxml-->
- 
-<view>
+<view class="app">
 
-
-<view class="title"> 上传发货单 </view>
- 
-<view class="progress-box">
-  <van-progress
-    percentage="{{ progress }}"
-    pivot-text="{{ progress_desc }}"
-    stroke-width="18"
-    pivot-color="#7232dd"
-    color="linear-gradient(to right, #be99ff, #7232dd)"
-  />
-
-  <van-steps steps="{{ steps }}" active="{{ active }}" />
-
-</view> 
-
-<!-- 指向微信公众平台首页的web-view -->
-<!-- <web-view src="https://mp.weixin.qq.com/"></web-view> -->
-
-
-<view class="files">
-{{excel}} 
-  <!-- <button bindtap="upload">请选择Excel文件</button> -->
-  <van-button type="primary" bindtap="upload">{{ select_desc }}</van-button>
+<!-- 1 顶部标题，居中 -->
+<view class="section header">
+  <van-icon name="guide-o" size="20px" /> 
+  上传发货单 
 </view>
 
 
-<view class="pics">
-  {{pics}} 
-  <!-- <button bindtap="upload">上传图片（最多4张）</button> -->
-  <van-uploader 
-      file-list="{{ fileList }}" 
-      accept="image"
-      use-before-read
-      bind:before-read="beforeRead"
-      bind:after-read="afterRead" 
-      deletable="{{ true }}" 
-      max-count="4" 
-  />
-
+<!-- 2 流程图 -->
+<view class="section section2">
+  <van-steps  
+    direction="vertical" 
+    steps="{{ steps }}" 
+    active="{{ active }}" />
 </view>
 
+<!-- 3 上传excel -->
+<view class="section section3">
+  <view> <van-icon name="orders-o" /> 请选择Excel文件 </view>
+  <view class="send_box"> 
+    <view class="excel_name">{{excel}} </view>
+    <!-- <button bindtap="upload">请选择Excel文件</button> -->
+    <van-button class="uploadBtn" type="primary" bindtap="upload">{{ select_desc }}</van-button>
+  </view>
+</view>
+
+<!-- 4 上传图片 可选 -->
+<view class="section section4">
+
+  <view class="title_sub"> <van-icon name="photo-o" /> 上传图片（可选） </view>
+  <view class="pic_box">  
+    {{pics}}  
+    <van-uploader 
+        file-list="{{ fileList }}" 
+        accept="image"
+        use-before-read
+        bind:before-read="beforeRead"
+        bind:after-read="afterRead" 
+        deletable="{{ true }}" 
+        max-count="4" 
+    />
+  </view>
+</view>
  
 
 
-<view class="submit_view2">
-  <van-button type="default"  >发 货</van-button>
+<view class="section footer">
+  <van-button loading="{{loading}}" disabled="{{disabled}}"   block type="info" bind:click="submit">发 货</van-button>
 </view>
 
 </view>

@@ -1,4 +1,4 @@
-// pages/getPDF/getPDF.js
+// pages/viewPdf/viewPdf.js
 Page({
 
   /**
@@ -12,6 +12,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中，请稍候'
+    })
+
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 3000)
 
   },
 
@@ -61,37 +68,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    this.fnShare()
-  },
-  fnShare(){
 
-    wx.downloadFile({
-      url: 'http://192.168.31.158/API/New/PDF/examples/example_048.php?id=1&type=file', // 下载url
-      success (res) {
-        // 下载完成后转发
-        wx.shareFileMessage({
-          filePath: res.tempFilePath,
-          success() {},
-          fail: console.error,
-        })
-      },
-      fail: console.error,
-    })
- 
-    
-  },  
-  fnView(){
-    // wx.navigateTo({
-    //   url:'viewPdf?id=1'  
-    //   //'http://192.168.31.158/API/New/PDF/examples/example_048.php?id=1',
-    // })
-
-    wx.redirectTo({
-      url: '/pages/viewPdf/viewPdf?id=1'
-    })
-    
   }
-
-
-
 })

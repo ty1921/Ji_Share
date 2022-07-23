@@ -1,2 +1,51 @@
-<!--pages/getAction/getAction.wxml-->
-<text>pages/getAction/getAction.wxml</text>
+<view class="item">
+
+<!-- 1 顶部标题，居中 -->
+<view class="section header">
+  <van-icon name="logistics" size="20px" /> 
+  收货（单号：080116000369）
+</view>
+
+<view class="data_box">
+
+  <van-row custom-class="mx_box">     
+      <van-col span="8"  > 品牌：倍耐力 </van-col>            
+      <van-col span="8"  > 年款：2016 </van-col> 
+      <van-col span="8"  > 发货：<text class="bold green">12条</text> </van-col>
+
+      <van-col span="16"> 车型：PANAMERA (PO623) </van-col>          
+      <van-col span="8"  > DOT：2139 </van-col>
+
+      <van-col span="24"> 花纹：CINTURATO P7 ALL SEASON </van-col>
+  
+      <van-col span="24"> 规格：275/35R21 103V XL P7AS (N1) NCS </van-col>        
+  </van-row>
+ 
+ 
+</view>
+ 
+<view class="footer"> 
+    
+  <!-- 4 上传图片 可选 -->
+  <view class="section section4">
+
+    <view class="title_sub"> <van-icon name="photo-o" /> 上传图片（可选） </view>
+
+    <view class="pic_box">  
+      {{pics}}  
+      <van-uploader 
+          file-list="{{ fileList }}" 
+          accept="image"
+          use-before-read
+          bind:before-read="beforeRead"
+          bind:after-read="afterRead" 
+          deletable="{{ true }}" 
+          max-count="4" 
+      />
+    </view>
+  </view>
+
+  <van-button type="warning" open-type="share" data-index="2"> 确认收货 </van-button>
+</view> 
+ 
+</view>

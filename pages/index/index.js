@@ -2,7 +2,7 @@ const app = getApp()
   
 Page({
   data: {
-    motto: '获取手机号，准备发货',
+    motto: '授权，准备发货',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -17,7 +17,28 @@ Page({
     // }
  
     //获取手机 
-    this.getServerUserInfo() 
+    let tel = wx.getStorageSync('tel')
+
+    if( tel.length == 11 ){
+      //跳走
+      this.setData({
+        motto: '用户已授权，正在跳转',
+      }) 
+
+      wx.showLoading({
+        title: '正在跳转',
+      }) 
+
+      setTimeout(function(){
+        wx.redirectTo({
+          url: '/pages/send/send'
+        })
+      },1500)
+      
+    }
+    else{  
+      
+    }
 
   
 
@@ -39,35 +60,48 @@ Page({
    * 获取openid、userToken
    */
   getServerUserInfo: function (e) {
-    let that = this
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-           console.log(1111111111,res)
-        }
-      }
-    })
+    
   },
   fnGetInfo(e){
-    console.log('获取手机了')
-
+    console.log('获取手机号')
     console.log(e)
+
+    let msg = e.detail.errMsg
+    
+    if( msg == "getPhoneNumber:fail user deny" ){
+      wx.$alert('需要授权获取手机号才能发货！')
+      return
+    }
 
     console.log(e.detail.encryptedData)
     console.log(e.detail.iv) 
     
-    wx.$get({
-      url: 'demo.php?action=getTel&encryptedData=' + e.detail.encryptedData + '&iv=' + e.detail.iv ,
-    }).then(res => {
-      console.log('getTel')
-      console.log(res)
+    let that = this
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+                  
+            wx.$get({
+              url: 'wx.php?code='+ e.detail.code +'&encryptedData=' + encodeURIComponent(e.detail.encryptedData) + '&iv=' + e.detail.iv ,
+            }).then(res => {
+              console.log('getTel')
+              
+              let tel = res.data.phone_info.phoneNumber
+              if( !tel ){
+                tel = res.data.phone_info.purePhoneNumber
+              }
 
-      const data = res.data
-      // this.setData({
-      //   total_card: res.total,
-      //   list: data
-      // })
+              //存储手机
+              wx.setStorageSync('tel', tel)
+
+              //跳到发货页
+
+            })
+        }
+      }
     })
+
+    
 
   },
   getPhoneNumber (e) {
