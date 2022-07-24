@@ -19,21 +19,10 @@ Page({
     count: 3,
     addedCount: 0,
     fileList: [
-      {
-        url: 'https://img.yzcdn.cn/vant/leaf.jpg',
-        name: '图片1',
-        deletable:true
-      },
       // {
       //   url: 'https://img.yzcdn.cn/vant/leaf.jpg',
       //   name: '图片1',
-      // },
-      // // Uploader 根据文件后缀来判断是否为图片文件
-      // // 如果图片 URL 中不包含类型信息，可以添加 isImage 标记来声明
-      // {
-      //   url: 'http://iph.href.lu/60x60?text=default',
-      //   name: '图片2',
-      //   isImage: true,
+      //   deletable:true
       // },
     ], 
     steps: [
@@ -69,7 +58,11 @@ Page({
       success (res) {
         if( res.tempFiles[0].size > 1000000 ){
           wx.$alert('文件太大了！请重新选择')
-          return
+          that.setData({
+            disabled: false,
+            loading: false, 
+          })
+          return false
         }
         that.data.excel = res.tempFiles[0].name
    
@@ -94,6 +87,16 @@ Page({
     let that = this
     const { file } = event.detail;
     console.log( '上传图片', file )
+
+    if( file.size > 1000000 ){
+      wx.$alert('文件太大了！请重新选择')
+      that.setData({
+        disabled: false,
+        loading: false, 
+      })
+      return false
+    }
+
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
       url: 'http://42.193.249.42/backend/upload.php?action=upload', // 仅为示例，非真实的接口地址
@@ -188,6 +191,12 @@ Page({
 
         if( datas.code == 1 ){
           wx.$alert('发货成功！');
+
+          setTimeout(function(){
+            wx.redirectTo({
+              url: '/pages/share/share?order_id=' + datas.order_id
+            })
+          },2000)
         }
         else{
           wx.$alert('发货失败！ [code:'+datas.code+']');

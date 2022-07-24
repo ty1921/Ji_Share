@@ -1,7 +1,7 @@
 // app.js
 import './utils/api.js';
 
-const host =  'http://192.168.31.158/API/New/';
+const host =  'http://42.193.249.42/backend/';
 // const host = 'https://www.fredwheels.com/backend/API/';
  
 App({

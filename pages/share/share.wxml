@@ -1,18 +1,32 @@
 <view class="item">
 
+    <van-row custom-class="mx_box">
+        <van-col span="24" class="title"> 发货单号：{{order_id}} </van-col>
 
-    <van-row>    
-        <van-col span="24"> 发货编号：080116000369 </van-col>
+        <van-col span="24"> 发货人员：{{info.col1}}（{{info.col2}}） </van-col>    
+        <van-col span="24" > 发货日期：{{info.col4}}  </van-col>               
+        <van-col span="24" > 物流公司：{{info.col3}}  </van-col>  
 
-        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCSCINTURATO P7 ALL SEASON </van-col>        
-        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col> 
-
-        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCS-CINTURATO P7 ALL SEASON </van-col>        
-        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col>
-
-        <van-col span="20"> 倍耐力-PANAMERA (PO623)-2016-2139-275/35R21 103V XL P7AS (N1) NCS-CINTURATO P7 ALL SEASON </van-col>        
-        <van-col span="4"  > 发货：<text class="bold green">12条</text> </van-col>
+        <van-col span="24"> 收货人员：{{info.col5}}（{{info.col8}}）  </van-col>     
+        <van-col span="24"> 收货公司：{{info.col6}}   </van-col>   
+        <van-col span="24"> 收货地址：{{info.col7}}   </van-col>   
     </van-row>
+
+    <van-divider
+    contentPosition="center"
+    customStyle="color: #1989fa; border-color: #1989fa; font-size: 13px;"
+    >
+    发货单详情
+    </van-divider>
+
+
+    <view wx:for="{{list}}" wx-for-index="index" wx-for-item="item">
+        <van-row>
+            <van-col span="24"> {{item.col1}}-{{item.col2}}-{{item.col3}}-{{item.col4}}-{{item.col5}}-{{item.col6}}-{{item.col7}} 
+            <text class="bold green">{{item.col8}}{{item.col9}}</text> </van-col>  
+        </van-row>
+    </view>
+    
  
 
     <view class="tips_box">
@@ -21,8 +35,7 @@
     </view>    
  
     <view class="footer"> 
-        <!-- <button class="shareBtn" data-index="2" style="width:600rpx" open-type="share">分享给收货方</button> -->
-        <van-button type="primary" open-type="share" data-index="2"> 分享给收货方 </van-button>
+        <van-button class="btn" type="primary" open-type="share" data-index="2"> 分享给收货方 </van-button>
     </view>
     <!-- <view>{{id}}</view> -->
 </view>

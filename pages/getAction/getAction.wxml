@@ -3,24 +3,35 @@
 <!-- 1 顶部标题，居中 -->
 <view class="section header">
   <van-icon name="logistics" size="20px" /> 
-  收货（单号：080116000369）
+  收货（单号：{{order_id}}）
 </view>
 
 <view class="data_box">
 
-  <van-row custom-class="mx_box">     
-      <van-col span="8"  > 品牌：倍耐力 </van-col>            
-      <van-col span="8"  > 年款：2016 </van-col> 
-      <van-col span="8"  > 发货：<text class="bold green">12条</text> </van-col>
+  <van-row custom-class="mx_box">
+        <van-col span="24"> 发货人员：{{info.col1}}（{{info.col2}}） </van-col>    
+        <van-col span="24" > 发货日期：{{info.col4}}  </van-col>               
+        <van-col span="24" > 物流公司：{{info.col3}}  </van-col>  
 
-      <van-col span="16"> 车型：PANAMERA (PO623) </van-col>          
-      <van-col span="8"  > DOT：2139 </van-col>
-
-      <van-col span="24"> 花纹：CINTURATO P7 ALL SEASON </van-col>
-  
-      <van-col span="24"> 规格：275/35R21 103V XL P7AS (N1) NCS </van-col>        
-  </van-row>
+        <van-col span="24"> 收货人员：{{info.col5}}（{{info.col8}}）  </van-col>     
+        <van-col span="24"> 收货公司：{{info.col6}}   </van-col>   
+        <van-col span="24"> 收货地址：{{info.col7}}   </van-col>   
+    </van-row>
  
+  <van-divider
+    contentPosition="center"
+    customStyle="color: #FF5722; border-color: #FF5722; font-size: 13px;"
+    >
+    收货单详情
+    </van-divider>
+
+
+    <view wx:for="{{list}}" wx-for-index="index" wx-for-item="item">
+        <van-row>
+            <van-col span="24"> {{item.col1}}-{{item.col2}}-{{item.col3}}-{{item.col4}}-{{item.col5}}-{{item.col6}}-{{item.col7}} 
+            <text class="bold green">{{item.col8}}{{item.col9}}</text> </van-col>  
+        </van-row>
+    </view>
  
 </view>
  
@@ -41,11 +52,13 @@
           bind:after-read="afterRead" 
           deletable="{{ true }}" 
           max-count="4" 
+          catch:delete="deleteImg"
       />
     </view>
   </view>
 
-  <van-button type="warning" open-type="share" data-index="2"> 确认收货 </van-button>
+  <van-button wx:if="{{!disabled}}" disabled="{{disabled}}" type="warning" bindtap="submit"> {{btn}} </van-button>
+  <van-button wx:if="{{disabled}}" type="info" bindtap="viewPdf"> 已收货，查看回执 </van-button>
 </view> 
  
 </view>

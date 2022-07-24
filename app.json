@@ -1,13 +1,13 @@
 {
   "pages": [
     
-    "pages/getAction/getAction",
-    "pages/send/send", 
-    "pages/index/index",
-    "pages/getPDF/getPDF",
     "pages/share/share",
+    "pages/index/index", 
+    "pages/viewPdf/viewPdf",
+    "pages/getAction/getAction",
     "pages/getLogin/getLogin",
-    "pages/viewPdf/viewPdf"
+    "pages/send/send", 
+    "pages/getPDF/getPDF"
   ],
   "window": {
     "backgroundTextStyle": "light",

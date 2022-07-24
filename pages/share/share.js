@@ -5,8 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:"",
+    order_id:"",
     path:'',
+    info:[],
+    list:[],
   },
 
   /**
@@ -15,14 +17,20 @@ Page({
   onLoad: function (options) {
     console.log("options-------------------------")
     console.log(options)
+    let id = options.order_id
+    if(!id || id<= 0 || id == 'undefined'){
+      id=3
+    }
     this.setData({
-      id: options.id,
-      path:"/pages/getLogin/getLogin?id=" + this.id,
+      order_id: id,
+      path:"/pages/getLogin/getLogin?id=" + id,
       title:"发货成功，请收货！",
     })
+
+    this.getData(id)
   },
   /**
-   * 用户点击右上角分享
+   * 用户点击右上角分享 
    */
   onShareAppMessage:function(res){
     console.log(res)
@@ -30,34 +38,43 @@ Page({
     if(res.from == 'button'){//自定义按钮分享
       //如果form值是button，则target是触发这次转发事件的button，否则为undefined
       //自定义转发内容
-      var title=""
-      var path=""
+      var title=this.data.title
+      var path=this.data.path
       var jsonStr={id:1,name:"测试的好友"}
 
-      
-      
-
       return{
-        title: this.title,
+        title: this.data.title,
         path: this.path, 
         success: function(res) {
-          console.log('分享成功')
+          console.log('分享成功',title,path)
         },
         fail: function(res) {
-          console.log('分享失败')
+          console.log('分享失败',title,path)
         }
       }
     }else{//右上角转发菜单
       return{
-        title:  this.title,
+        title:  this.data.title,
         path:  this.path,
         success: function(res) {
-          console.log('分享成功')
+          console.log('分享成功',title,path)
         },
         fail: function(res) {
-          console.log('分享失败')
+          console.log('分享失败',title,path)
         }
       }
     }
+  },
+  getData(order_id){
+    console.log('获取数据开始,order_id=',order_id)
+    wx.$get({
+      url: 'order.php?action=Qlist&order_id=' + order_id ,
+    }).then(res => {
+      const data = res.data
+      this.setData({
+        info: res.data,
+        list: res.data2
+      })
+    })
   }
 })

@@ -1,4 +1,4 @@
-const host =  'http://192.168.31.158/API/New/';
+const host =  'http://42.193.249.42/backend/';
 // const host = 'https://www.fredwheels.com/backend/API/';
 
 const alert = title =>{
@@ -43,7 +43,7 @@ const request = (options, resolve, reject) => {
       ...options,
       success: (res) => {
         wx.hideLoading()
-        wx.stopPullDownRefresh()
+        // wx.stopPullDownRefresh()
         const data = res.data
 
         resolve(data)
@@ -51,7 +51,7 @@ const request = (options, resolve, reject) => {
       },
       fail: (error) => {
         wx.hideLoading()
-        wx.stopPullDownRefresh()
+        // wx.stopPullDownRefresh()
         alert(JSON.stringify(error))
         reject(error)
       }

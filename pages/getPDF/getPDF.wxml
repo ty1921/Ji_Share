@@ -4,13 +4,14 @@
 
 <view class="tips_box">
     <van-icon name="passed" size="200rpx" color="#57C22D" />    
-    <view class="tips"> 确认收货成功 </view>
+    <view class="tips"> 单号[{{order_id}}]确认收货成功 </view>
 </view>    
-
+ 
 <view class="footer">  
-  <view class="flex">
-    <van-button class="btn" type="primary" bindtap="fnView" data-index="1"> 查看PDF </van-button>
-    <van-button class="btn" type="primary" bindtap="fnView" data-index="2"> 下载PDF </van-button>
+  <view class="flex2">
+    <van-button block custom-class="btn" type="primary" bindtap="fnView" data-index="1"> 查看PDF </van-button>
+
+    <van-button block custom-class="btn" type="primary" bindtap="fnViewDown" data-index="2"> 下载PDF </van-button>
   </view>
 
   <view>

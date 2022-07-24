@@ -59,3 +59,11 @@
   /* background: red; */
   /* border: 1px solid green; */
 }
+
+.green{
+  color: #FF5722 !important;
+}
+
+.btn2{
+  margin-left: 50rpx;
+}

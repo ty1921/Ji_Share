@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pdf: ''
   },
 
   /**
@@ -15,6 +15,19 @@ Page({
     wx.showLoading({
       title: '加载中，请稍候'
     })
+
+    console.log("options-------------------------")
+    console.log(options)
+    let id = options.order_id
+    if(!id || id<= 0 || id == 'undefined'){
+      id=3
+    }
+
+    this.setData({
+      pdf: 'http://42.193.249.42/backend/PDF/examples/example_048.php?order_id=' + id
+    })
+
+    console.log('url=',this.data.pdf)
 
     setTimeout(function () {
       wx.hideLoading()

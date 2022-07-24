@@ -33,7 +33,7 @@
 }
 
 .btn{
-  margin: 30rpx 0;
+  margin: 30rpx 0 !important;
 }
 
 .tips2{

@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.title{
+  font-weight: bold; 
+}
 .tips{
   color: #57C22D;
   font-size: 30rpx;
@@ -16,7 +19,7 @@
 }
 
 .tips_box{
-  margin: 300rpx 0;
+  margin: 200rpx 0;
 }
 
 .footer{
@@ -25,4 +28,12 @@
   bottom: 6%;
   left: 10%;
   text-align: center;
+}
+ 
+
+.mx_box{
+  width: 96%;
+  margin: 1%;
+  border: 2px solid rgb(99, 99, 99);
+  border-radius: 5rpx;
 }

@@ -5,14 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    order_id:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      order_id: options.order_id
+    })
   },
 
   /**
@@ -66,7 +69,7 @@ Page({
   fnShare(){
 
     wx.downloadFile({
-      url: 'http://192.168.31.158/API/New/PDF/examples/example_048.php?id=1&type=file', // 下载url
+      url: 'http://42.193.249.42/backend/PDF/examples/example_048.php?type=file&order_id=' + this.data.order_id, // 下载url
       success (res) {
         // 下载完成后转发
         wx.shareFileMessage({
@@ -80,16 +83,15 @@ Page({
  
     
   },  
-  fnView(){
-    // wx.navigateTo({
-    //   url:'viewPdf?id=1'  
-    //   //'http://192.168.31.158/API/New/PDF/examples/example_048.php?id=1',
-    // })
-
+  fnView(){    
     wx.redirectTo({
-      url: '/pages/viewPdf/viewPdf?id=1'
-    })
-    
+      url: '/pages/viewPdf/viewPdf?order_id=' + this.data.order_id
+    })    
+  },  
+  fnViewDown(){
+    wx.redirectTo({
+      url: 'http://42.193.249.42/backend/PDF/examples/example_048.php?order_id=' + this.data.order_id
+    }) 
   }
 
 
