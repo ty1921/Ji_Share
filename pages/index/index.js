@@ -2,6 +2,8 @@ const app = getApp()
   
 Page({
   data: {
+    tel:'',
+    password:'',
     motto: '授权，准备发货',
     userInfo: {},
     hasUserInfo: false,
@@ -21,19 +23,19 @@ Page({
 
     if( tel.length == 11 ){
       //跳走
-      this.setData({
-        motto: '用户已授权，正在跳转',
-      }) 
+      // this.setData({
+      //   motto: '用户已授权，正在跳转',
+      // }) 
 
-      wx.showLoading({
-        title: '正在跳转',
-      }) 
+      // wx.showLoading({
+      //   title: '正在跳转',
+      // }) 
 
-      setTimeout(function(){
-        wx.redirectTo({
-          url: '/pages/send/send'
-        })
-      },1500)
+      // setTimeout(function(){
+      //   wx.redirectTo({
+      //     url: '/pages/send/send'
+      //   })
+      // },1500)
       
     }
     else{  
@@ -73,6 +75,17 @@ Page({
       return
     }
 
+    
+    if (!/^1[3-9]\d{9}$/.test(tel)) {
+      wx.showToast({  title: '请输入正确的手机号！',  icon: 'none' })
+      return false;
+    }
+
+    if (!/^\d{6}$/.test(yzm)) {
+      wx.showToast({  title: '请输入6位数字验证码！',   icon: 'none'})
+      return false;
+    }
+
     console.log(e.detail.encryptedData)
     console.log(e.detail.iv) 
     
@@ -107,5 +120,14 @@ Page({
   getPhoneNumber (e) {
     console.log(e)
   },
-  
+  bindTelInput(e){
+    this.setData({
+      tel: e.detail.value
+    })
+  },
+  bindPwdInput(e){
+    this.setData({
+      password: e.detail.value
+    })
+  }
 })

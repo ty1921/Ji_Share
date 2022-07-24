@@ -17,11 +17,29 @@
 .usermotto {
   display: block;
   text-align: center;
-  margin: 200px 0 30px 0;
+  margin: 10px 0 30px 0;
 }
 
 .btn{
   background: rgb(20, 207, 176);
   color: white;
   margin-top: 30rpx;
+  width: 300rpx;
+}
+
+.login_box{
+  /* border: 1px solid red; */
+  margin-top: 200rpx;
+  width: 80%;
+  height: 200rpx;
+}
+
+.input{
+  margin: 20rpx;
+  line-height: 50rpx;
+  background: #eaeaea !important;
+  padding: 11rpx 30rpx;
+  border-radius: 15rpx;
+  text-align: center;
+  font-size: 26rpx;
 }

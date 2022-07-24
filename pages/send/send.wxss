@@ -73,3 +73,19 @@
 .van-step__circle-container{
   /* display: none !important; */
 }
+
+.title_excel{
+  display: flex;
+}
+
+.title_excel view{
+  width: 45%;
+}
+
+.download_tips{
+  display: none;
+  text-align: right;
+  width: 200rpx !important;
+  color: blue;
+  border-bottom: 1px solid grey;
+}

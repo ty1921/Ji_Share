@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+
   <view class="userinfo">
     <block wx:if="{{canIUseOpenData}}">
       <view class="userinfo-avatar" bindtap="bindViewTap">
@@ -17,9 +18,16 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+
+  <view class="login_box">
+     <input class="input" type="number" name="" placeholder="请输入账号" maxlength="11" bindinput="bindTelInput" />
+     <input class="input" type="password" name=""  placeholder="请输入密码" maxlength="16" confirm-type="done" bindinput="bindPwdInput" />
+  </view>
+
+
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo" >发 货</button>
+    <!-- <text class="user-motto">{{motto}}</text> -->
+    <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo" >登 录</button>
     <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">test</button> -->
   </view>
 </view>

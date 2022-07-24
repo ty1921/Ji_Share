@@ -17,7 +17,7 @@
 
 <!-- 3 上传excel -->
 <view class="section section3">
-  <view> <van-icon name="orders-o" /> 请选择Excel文件 </view>
+  <view class="title_excel"> <van-icon name="orders-o" /> <view>请选择Excel文件</view>  <view class="download_tips">点此下载模板</view> </view>
   <view class="send_box"> 
     <view class="excel_name">{{excel}} </view>
     <!-- <button bindtap="upload">请选择Excel文件</button> -->
@@ -39,6 +39,7 @@
         bind:after-read="afterRead" 
         deletable="{{ true }}" 
         max-count="4" 
+        catch:delete="deleteImg"
     />
   </view>
 </view>

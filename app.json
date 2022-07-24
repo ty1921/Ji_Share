@@ -1,11 +1,11 @@
 {
   "pages": [
     
-    "pages/send/send",
+    "pages/getAction/getAction",
+    "pages/send/send", 
     "pages/index/index",
     "pages/getPDF/getPDF",
     "pages/share/share",
-    "pages/getAction/getAction",
     "pages/getLogin/getLogin",
     "pages/viewPdf/viewPdf"
   ],
