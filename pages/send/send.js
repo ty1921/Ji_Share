@@ -99,7 +99,7 @@ Page({
 
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: 'http://42.193.249.42/backend/upload.php?action=upload', // 仅为示例，非真实的接口地址
+      url: 'https://joytour-tyre.com/backend/upload.php?action=upload', // 仅为示例，非真实的接口地址
       filePath: file.url,
       name: 'file',
       formData: { 
@@ -140,10 +140,10 @@ Page({
     //1 提交前，必须先允许订阅消息
     var that = this 
     wx.requestSubscribeMessage({
-      tmplIds: ['WIshaWVj9o2t0l2sUZOV_siEr0HJywCgxc4pfCs-X3c','cfaHooXfVzTecnVL7rS835WLWxlK7oKfjFfot7cJRhM'],
+      tmplIds: ['xNVm55glddqLNUEcUgaz_RzWXWm0JvLzvBzdTWsIpnM'],
       success (res) {
         console.log("wx.requestSubscribeMessage成功了")
-        if( res['WIshaWVj9o2t0l2sUZOV_siEr0HJywCgxc4pfCs-X3c'] == "reject" ){
+        if( res['xNVm55glddqLNUEcUgaz_RzWXWm0JvLzvBzdTWsIpnM'] == "reject" ){
            wx.showToast({    title: '请允许订阅消息后，方可继续操作！',   icon: 'none'  })
           return false
         }
@@ -175,7 +175,7 @@ Page({
 
     //2 上传excel
     wx.uploadFile({
-      url: 'http://42.193.249.42/backend/excel.php?action=import', // 仅为示例，非真实的接口地址
+      url: 'https://joytour-tyre.com/backend/excel.php?action=import', // 仅为示例，非真实的接口地址
       filePath: this.data.path,
       name: 'excel',
       formData: { 

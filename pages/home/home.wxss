@@ -1,0 +1,70 @@
+
+.section{  
+  padding: 10rpx 0; 
+}
+
+.header{
+  width: 100%;
+  /* height: 90rpx; */
+  padding: 30rpx;
+  background: #ffffff;
+  font-weight: bold;
+}
+
+.item{
+  text-align: center;
+}
+
+.tips{
+  color: #57C22D;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.van-col{
+  border: 1px dotted rgb(209, 209, 209);
+  font-size: 22rpx;
+  text-align: left;
+  padding: 5rpx 20rpx;
+}
+
+.data_box{
+  height: 100vh;
+  padding-bottom: 200rpx;
+  background: rgb(231, 250, 253);
+  overflow: scroll;
+}
+
+.mx_box{
+  width: 96%;
+  margin: 1%;
+  border: 1px solid rgb(99, 99, 99);
+  border-radius: 5rpx;
+}
+
+.tips_box{
+  margin: 300rpx 0;
+}
+
+.footer{
+  width: 100%;
+  position: fixed;
+  bottom: 6%;
+  left: 0;
+  text-align: center;
+}
+
+.pic_box{
+  margin: 20rpx;
+  display: flex;
+  /* background: red; */
+  /* border: 1px solid green; */
+}
+
+.green{
+  color: #FF5722 !important;
+}
+
+.btn2{
+  margin-left: 50rpx;
+}

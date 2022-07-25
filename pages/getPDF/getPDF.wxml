@@ -11,7 +11,7 @@
   <view class="flex2">
     <van-button block custom-class="btn" type="primary" bindtap="fnView" data-index="1"> 查看PDF </van-button>
 
-    <van-button block custom-class="btn" type="primary" bindtap="fnViewDown" data-index="2"> 下载PDF </van-button>
+    <!-- <van-button block custom-class="btn" type="primary" bindtap="fnViewDown" data-index="2"> 下载PDF </van-button> -->
   </view>
 
   <view>

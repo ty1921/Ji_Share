@@ -1,0 +1,30 @@
+<view class="item">
+
+<view class="data_box">
+
+  <van-divider
+    contentPosition="center"
+    customStyle="color: #FF5722; border-color: #FF5722; font-size: 13px;"
+    >
+    我的发货单
+    </van-divider>
+
+
+    <view wx:for="{{list}}" wx-for-index="index" wx-for-item="item">
+        <van-row custom-class="mx_box">
+          <van-col span="10"> 单号：{{item.order_id}} </van-col>    
+          <van-col span="14" > 发货：{{item.created_time}}  </van-col>               
+          <van-col span="24" > 物流公司：{{item.to_company}}  </van-col>  
+          <van-col span="24"> 收货地址：{{item.to_addr}}（{{item.to_tel}}）  </van-col>     
+          <van-col span="24"> 收货公司：{{item.to_company}}   </van-col>   
+          <van-col span="16"> 收货时间：{{item.to_date==null ? '[未收货]':item.to_date}}   </van-col>             
+          <van-col span="8"> 状态：{{item.status==1 ? '完成':'未完成'}} </van-col>    
+      </van-row>    
+    </view>
+</view>
+ 
+<view class="footer">     
+  <van-button type="primary" bindtap="goto"> 发 货 </van-button>
+</view> 
+ 
+</view>

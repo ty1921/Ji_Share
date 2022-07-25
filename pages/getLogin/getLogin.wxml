@@ -1,26 +1,33 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo" >收 货</button>
-    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">test</button> -->
-  </view>
+
+<view class="userinfo">
+  <block wx:if="{{canIUseOpenData}}">
+    <view class="userinfo-avatar" bindtap="bindViewTap">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <open-data type="userNickName"></open-data>
+  </block>
+  <block wx:elif="{{!hasUserInfo}}">
+    <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+    <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+  </block>
+  <block wx:else>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
 </view>
- 
+
+<view class="login_box">
+   <input class="input" type="number"  placeholder="请输入收货账号" maxlength="11" bindinput="bindTelInput" />
+   <input class="input" type="password"  placeholder="请输入密码" maxlength="16" confirm-type="done" bindinput="bindPwdInput" />
+</view>
+
+
+<view class="usermotto">
+  <!-- <text class="user-motto">{{motto}}</text> -->
+  <button class="btn" plain open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo" >收货登录</button>
+  <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">test</button> -->
+</view>
+</view>

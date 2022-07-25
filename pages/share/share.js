@@ -23,7 +23,7 @@ Page({
     }
     this.setData({
       order_id: id,
-      path:"/pages/getLogin/getLogin?id=" + id,
+      path:"/pages/getLogin/getLogin?order_id=" + id,
       title:"发货成功，请收货！",
     })
 
@@ -44,7 +44,7 @@ Page({
 
       return{
         title: this.data.title,
-        path: this.path, 
+        path: this.data.path, 
         success: function(res) {
           console.log('分享成功',title,path)
         },
@@ -55,7 +55,7 @@ Page({
     }else{//右上角转发菜单
       return{
         title:  this.data.title,
-        path:  this.path,
+        path:  this.data.path,
         success: function(res) {
           console.log('分享成功',title,path)
         },

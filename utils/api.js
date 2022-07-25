@@ -1,4 +1,4 @@
-const host =  'http://42.193.249.42/backend/';
+const host =  'https://joytour-tyre.com/backend/';
 // const host = 'https://www.fredwheels.com/backend/API/';
 
 const alert = title =>{

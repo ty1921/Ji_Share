@@ -90,7 +90,7 @@ Page({
   },  
   fnViewDown(){
     wx.redirectTo({
-      url: 'http://42.193.249.42/backend/PDF/examples/example_048.php?order_id=' + this.data.order_id
+      url: 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + this.data.order_id
     }) 
   }
 

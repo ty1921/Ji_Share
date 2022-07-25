@@ -31,12 +31,10 @@ Page({
       //   title: '正在跳转',
       // }) 
 
-      // setTimeout(function(){
-      //   wx.redirectTo({
-      //     url: '/pages/send/send'
-      //   })
-      // },1500)
-      
+        wx.redirectTo({
+          url: '/pages/home/home'
+        })
+       
     }
     else{  
       
@@ -51,6 +49,7 @@ Page({
       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
         console.log(res)
+        wx.setStorageSync('userInfo', res.userInfo );
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -68,6 +67,19 @@ Page({
     console.log('获取手机号')
     console.log(e)
 
+    let tel = this.data.tel
+    let password = this.data.password
+
+  
+    if (!/^1[3-9]\d{9}$/.test(tel)) {
+      wx.showToast({  title: '请输入正确的手机号！',  icon: 'none' })
+      return false;
+    }
+
+    //登录
+    this.loginSubmit()
+    return
+
     let msg = e.detail.errMsg
     
     if( msg == "getPhoneNumber:fail user deny" ){
@@ -75,16 +87,6 @@ Page({
       return
     }
 
-    
-    if (!/^1[3-9]\d{9}$/.test(tel)) {
-      wx.showToast({  title: '请输入正确的手机号！',  icon: 'none' })
-      return false;
-    }
-
-    if (!/^\d{6}$/.test(yzm)) {
-      wx.showToast({  title: '请输入6位数字验证码！',   icon: 'none'})
-      return false;
-    }
 
     console.log(e.detail.encryptedData)
     console.log(e.detail.iv) 
@@ -107,7 +109,8 @@ Page({
               //存储手机
               wx.setStorageSync('tel', tel)
 
-              //跳到发货页
+              //登录
+              this.loginSubmit()
 
             })
         }
@@ -128,6 +131,34 @@ Page({
   bindPwdInput(e){
     this.setData({
       password: e.detail.value
+    })
+  },
+  loginSubmit(){
+
+
+    wx.$post({
+      url: 'users.php?action=login',
+      data:{
+        tel: this.data.tel,
+        password: this.data.password,
+      },
+    }).then(res => {
+      console.log(res)
+      if(res.code== 1){
+        wx.$alert('登录成功！')
+
+        wx.setStorageSync('tel', this.data.tel )
+
+        setTimeout(function(){
+          wx.redirectTo({
+            url: '/pages/home/home?order_id=' + datas.order_id
+          })
+        },1500)
+      }
+      this.setData({
+        info: res.data,
+        list: res.data2
+      })
     })
   }
 })

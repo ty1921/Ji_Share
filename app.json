@@ -1,12 +1,14 @@
 {
   "pages": [
     
+    
+    "pages/home/home",
+    "pages/getLogin/getLogin", 
     "pages/share/share",
-    "pages/index/index", 
+    "pages/login/login",
     "pages/viewPdf/viewPdf",
     "pages/getAction/getAction",
-    "pages/getLogin/getLogin",
-    "pages/send/send", 
+    "pages/send/send",
     "pages/getPDF/getPDF"
   ],
   "window": {
