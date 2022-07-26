@@ -8,16 +8,16 @@
 
 
 <!-- 2 流程图 -->
-<view class="section section2">
+<!-- <view class="section section2">
   <van-steps  
     direction="vertical" 
     steps="{{ steps }}" 
     active="{{ active }}" />
-</view>
+</view> -->
 
 <!-- 3 上传excel -->
 <view class="section section3">
-  <view class="title_excel"> <van-icon name="orders-o" /> <view>请选择Excel文件</view>  <view class="download_tips">点此下载模板</view> </view>
+  <view class="title_excel"> <van-icon name="orders-o" /> <view>开始发货，请选择EXCEL文件</view>  <view class="download_tips">点此下载模板</view> </view>
   <view class="send_box"> 
     <view class="excel_name">{{excel}} </view>
     <!-- <button bindtap="upload">请选择Excel文件</button> -->
@@ -50,4 +50,20 @@
   <van-button loading="{{loading}}" disabled="{{disabled}}"   block type="info" bind:click="submit">发 货</van-button>
 </view>
 
+
+
+<!-- 底部导航 -->
+<van-tabbar
+  active="{{ active_tab }}"
+  active-color="#03a9f4"
+  inactive-color="#000"
+  bind:change="onChangeTab"
+>
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>  
+  <van-tabbar-item icon="guide-o">发货</van-tabbar-item>
+  <!-- <van-tabbar-item icon="user-o">我的</van-tabbar-item> -->
+</van-tabbar> 
+
 </view>
+
+

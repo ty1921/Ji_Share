@@ -6,6 +6,9 @@ Page({
    */
   data: {
     nickName: '',
+    active: 0,
+    active_tab: 0,
+    activeName: '1',
   },
 
   /**
@@ -25,23 +28,61 @@ Page({
     //   tel :  tel
     // })
 
-    this.getData( tel )
+    this.getData(1)
     
   },
-  getData( tel ){
-    console.log('获取数据开始',)
+  getData( type ){
+    let tel = wx.getStorageSync('tel')
+    console.log('获取数据开始', tel)
+    
     wx.$get({
-      url: 'order.php?action=QlistAll&tel=' +  tel,
+      url: 'order.php?action=QlistAll&type='+type+'&tel=' +  tel,
     }).then(res => {
       const data = res.data
-      this.setData({
-        list: res.data,
-      })
+      if( type == 1 ){
+        this.setData({ list: res.data,  })
+      }
+      else{
+        this.setData({ list2: res.data,  })
+      }
+      
     })
   },
   goto(){
     wx.redirectTo({
       url: '/pages/send/send'
     })
-  }
+  },
+  onChangeNav(event) {
+    console.log(event)
+    this.setData({ active: event.detail });
+    if( event.detail.index == 0 ){
+      this.getData( 1 )
+    }
+    else{
+      this.getData( 2 )
+    }
+  },
+  onChange2(event) {
+    this.setData({
+      activeName: event.detail,
+    });
+  },
+  onChangeTab(event) {
+    console.log(event.detail)
+    this.setData({
+      active_tab: event.detail,
+    });
+    if( event.detail == 1 ){      
+      wx.redirectTo({
+        url: '/pages/send/send'
+      })
+    }
+    // else if( event.detail == 2 ){      
+    //   wx.redirectTo({
+    //     url: '/pages/my/my'
+    //   })
+    // }
+  },
+ 
 })

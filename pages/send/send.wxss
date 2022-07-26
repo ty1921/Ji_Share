@@ -61,7 +61,7 @@
 .footer{
   width: 80%;
   position: fixed;
-  bottom: 6%;
+  bottom: 16%;
   left: 10%;
   text-align: center;
 }

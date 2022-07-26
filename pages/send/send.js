@@ -18,6 +18,7 @@ Page({
     images_str: '',
     count: 3,
     addedCount: 0,
+    active_tab: 1,
     fileList: [
       // {
       //   url: 'https://img.yzcdn.cn/vant/leaf.jpg',
@@ -216,6 +217,23 @@ Page({
     });
     // 删除后的图片传给父组件，父组件setData赋值数据
     this.triggerEvent('dalete', img_list);
+  },
+  
+  onChangeTab(event) {
+    console.log(event.detail)
+    this.setData({
+      active_tab: event.detail,
+    });
+    if( event.detail == 0 ){      
+      wx.redirectTo({
+        url: '/pages/home/home'
+      })
+    }
+    else if( event.detail == 2 ){      
+      wx.redirectTo({
+        url: '/pages/my/my'
+      })
+    }
   },
 
 })
