@@ -88,14 +88,14 @@ Page({
     const { file } = event.detail;
     console.log( '上传图片', file )
 
-    if( file.size > 1000000 ){
-      wx.$alert('文件太大了！请重新选择')
-      that.setData({
-        disabled: false,
-        loading: false, 
-      })
-      return false
-    }
+    // if( file.size > 1000000 ){
+    //   wx.$alert('文件太大了！请重新选择')
+    //   that.setData({
+    //     disabled: false,
+    //     loading: false, 
+    //   })
+    //   return false
+    // }
 
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({

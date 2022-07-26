@@ -151,7 +151,7 @@ Page({
 
         setTimeout(function(){
           wx.redirectTo({
-            url: '/pages/home/home?order_id=' + datas.order_id
+            url: '/pages/home/home'
           })
         },1500)
       }
