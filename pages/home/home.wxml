@@ -13,7 +13,7 @@
             <van-col span="24"> 收货地址：{{item.to_addr}}（{{item.to_tel}}）  </van-col>     
             <van-col span="24"> 收货公司：{{item.to_company}}   </van-col>   
             <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
-            <van-col span="8"> 状态：{{item.status==1 ? '完成':'未完成'}} </van-col>    
+            <van-col span="8"> 状态：{{item.status==2 ? '完成':'未完成'}} </van-col>    
           </van-row>  
         </van-collapse-item>
       </van-collapse>
@@ -24,13 +24,14 @@
     <view >
       <van-collapse accordion value="{{ activeName }}" bind:change="onChange2">
         <van-collapse-item title="单号：{{item.order_id}}" name="{{index}}" wx:for="{{list2}}" wx-for-index="index" wx-for-item="item" >
-          <van-row custom-class="mx_box"> 
-            <van-col span="14" > 发货：{{item.created_time}}  </van-col>               
+          <van-row custom-class="mx_box" bindtap="viewPdf( '{{item.order_id}}' )" > 
+            <van-col span="16" > 发货：{{item.created_time}}  </van-col>      
+            <van-col span="8"> 状态：{{item.status==2 ? '完成':'未完成'}} </van-col>             
             <van-col span="24" > 物流公司：{{item.to_company}}  </van-col>  
             <van-col span="24"> 收货地址：{{item.to_addr}}（{{item.to_tel}}）  </van-col>     
             <van-col span="24"> 收货公司：{{item.to_company}}   </van-col>   
             <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
-            <van-col span="8"> 状态：{{item.status==1 ? '完成':'未完成'}} </van-col>    
+            <van-col span="8" custom-class="green"> <view >查看PDF</view>  </van-col>    
           </van-row>  
         </van-collapse-item>
       </van-collapse>

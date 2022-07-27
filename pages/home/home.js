@@ -84,5 +84,11 @@ Page({
     //   })
     // }
   },
+  viewPdf(order_id){
+    console.log(order_id)
+    wx.redirectTo({
+        url: '/pages/viewPdf/viewPdf?order_id=' + order_id
+    })
+  }
  
 })

@@ -19,7 +19,7 @@ Page({
     console.log(options)
     let id = options.order_id
     if(!id || id<= 0 || id == 'undefined'){
-      id=3
+      id=10010
     }
     this.setData({
       order_id: id,

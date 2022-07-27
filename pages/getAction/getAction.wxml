@@ -29,7 +29,9 @@
     <view wx:for="{{list}}" wx-for-index="index" wx-for-item="item">
         <van-row>
             <van-col span="24"> {{item.col1}}-{{item.col2}}-{{item.col3}}-{{item.col4}}-{{item.col5}}-{{item.col6}}-{{item.col7}} 
-            <text class="bold green">{{item.col8}}{{item.col9}}</text> </van-col>  
+              <text class="bold green">{{item.col8}}{{item.col9}}</text> 
+              <text wx:if="{{item.col10}}" class="bold red">（单价：￥{{item.col10}}，总价：￥{{item.col11}}）</text>
+            </van-col>  
         </van-row>
     </view>
  

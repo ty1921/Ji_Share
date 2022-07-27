@@ -3,8 +3,8 @@
     
     
     "pages/home/home",
-    "pages/getLogin/getLogin", 
     "pages/share/share",
+    "pages/getLogin/getLogin", 
     "pages/login/login",
     "pages/viewPdf/viewPdf",
     "pages/getAction/getAction",

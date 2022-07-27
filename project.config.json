@@ -52,7 +52,7 @@
     "ignoreUploadUnusedFiles": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.0",
+  "libVersion": "2.25.1",
   "appid": "wx8a9b5ec946e6effa",
   "projectname": "ShareSent",
   "debugOptions": {
