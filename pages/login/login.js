@@ -17,7 +17,30 @@ Page({
     //     canIUseGetUserProfile: true
     //   })
     // }
- 
+    
+
+    let openid = wx.getStorageSync('openid')
+    if( !openid ){ 
+        let that = this
+        wx.login({
+          success: function (res) {
+
+            console.log('code=',res)
+            if (res) {
+              wx.$get({
+                url: 'wx.php?code='+res.code ,
+              }).then(res2 => {
+                console.log('wx.php=',res2)
+                const data = res2
+                wx.setStorageSync('openid',res2)
+              })
+            }
+          }
+        })
+    }
+
+return
+
     //获取手机 
     let tel = wx.getStorageSync('tel')
 
@@ -91,32 +114,6 @@ Page({
     console.log(e.detail.encryptedData)
     console.log(e.detail.iv) 
     
-    let that = this
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-                  
-            wx.$get({
-              url: 'wx.php?code='+ e.detail.code +'&encryptedData=' + encodeURIComponent(e.detail.encryptedData) + '&iv=' + e.detail.iv ,
-            }).then(res => {
-              console.log('getTel')
-              
-              let tel = res.data.phone_info.phoneNumber
-              if( !tel ){
-                tel = res.data.phone_info.purePhoneNumber
-              }
-
-              //存储手机
-              wx.setStorageSync('tel', tel)
-
-              //登录
-              this.loginSubmit()
-
-            })
-        }
-      }
-    })
-
     
 
   },

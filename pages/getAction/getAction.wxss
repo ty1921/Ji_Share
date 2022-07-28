@@ -67,3 +67,10 @@
 .btn2{
   margin-left: 50rpx;
 }
+
+.img{
+  display: block;
+  /* width: 49%; */
+  width: 140rpx;
+  height: 170rpx;
+}

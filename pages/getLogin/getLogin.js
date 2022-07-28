@@ -23,16 +23,16 @@ Page({
 
     if( tel.length == 11 ){
 
-      this.setData({
-        order_id: options.order_id
-      }) 
-
-      // wx.showLoading({
-      //   title: '正在跳转',
+      // this.setData({
+      //   order_id: options.order_id
       // }) 
 
+      wx.showLoading({
+        title: '已登录，正在跳转',
+      }) 
+
         wx.redirectTo({
-          url: '/pages/getAction/getAction?order_id=' + this.data.order_id
+          url: '/pages/getAction/getAction?order_id=' + options.order_id
         })
        
     }

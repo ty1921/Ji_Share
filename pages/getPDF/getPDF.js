@@ -69,7 +69,7 @@ Page({
   fnShare(){
 
     wx.downloadFile({
-      url: 'http://42.193.249.42/backend/PDF/examples/example_048.php?type=file&order_id=' + this.data.order_id, // 下载url
+      url: 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?type=file&order_id=' + this.data.order_id, // 下载url
       success (res) {
         // 下载完成后转发
         wx.shareFileMessage({
@@ -84,16 +84,34 @@ Page({
     
   },  
   fnView(){    
-    wx.redirectTo({
-      url: '/pages/viewPdf/viewPdf?order_id=' + this.data.order_id
-    })    
-  },  
-  fnViewDown(){
-    wx.redirectTo({
-      url: 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + this.data.order_id
-    }) 
-  }
+    let order_id = this.data.order_id
+    let url = 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + order_id
 
-
+    if (!(url && url.length)) {
+        return;
+    }
+    wx.showLoading("文件加载中...");
+    wx.downloadFile({
+        url: url,
+        success: (res) => {
+          
+            if (res.tempFilePath) {
+                wx.openDocument({
+                    filePath: res.tempFilePath,
+                    fail: (err) => {
+                        console.error(err);
+                    },
+                    complete: () => {
+                        wx.hideLoading();
+                    }
+                })
+            }
+        },
+        fail: (err) => {
+            console.error(err);
+            wx.hideLoading();
+        }
+    })
+  },
 
 })

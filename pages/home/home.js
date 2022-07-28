@@ -45,7 +45,6 @@ Page({
       else{
         this.setData({ list2: res.data,  })
       }
-      
     })
   },
   goto(){
@@ -105,9 +104,15 @@ Page({
     wx.downloadFile({
         url: url,
         success: (res) => {
+          
             if (res.tempFilePath) {
+              const newPath = res.tempFilePath
+              // const filePath = res.tempFilePath
+              // let newPath = wx.env.USER_DATA_PATH + '/' + order_id + '.pdf'
+              // wx.getFileSystemManager().renameSync(filePath, newPath)
+              
                 wx.openDocument({
-                    filePath: res.tempFilePath,
+                    filePath: newPath,
                     fail: (err) => {
                         console.error(err);
                     },
@@ -123,5 +128,22 @@ Page({
         }
     })
   },
- 
+  //预览图片，放大预览
+  preview(event) {
+    console.log(event.currentTarget.dataset.src)
+    let currentUrl = event.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: {currentUrl} // 需要预览的图片http链接列表
+    })
+  },
+  preview2(event) {
+    console.log(event.currentTarget.dataset.src)
+    let currentUrl = event.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: [currentUrl] // 需要预览的图片http链接列表
+    })
+  },
+
 })

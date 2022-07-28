@@ -16,6 +16,7 @@ Page({
       title: '加载中，请稍候'
     })
 
+    
     console.log("options-------------------------")
     console.log(options)
     let id = options.order_id
@@ -23,12 +24,13 @@ Page({
       id=3
     }
 
-  
+    let url = 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + id
+
     // this.setData({
     //   pdf: url
     // })
 
-    this.openFile(url)
+    // this.openFile(url)
 
     console.log('url=',this.data.pdf)
 

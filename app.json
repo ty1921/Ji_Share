@@ -1,15 +1,17 @@
 {
   "pages": [
     
-    
     "pages/home/home",
+    
+    "pages/getAction/getAction",
+
+    "pages/getPDF/getPDF",
+    
+    "pages/viewPdf/viewPdf",
     "pages/share/share",
     "pages/getLogin/getLogin", 
     "pages/login/login",
-    "pages/viewPdf/viewPdf",
-    "pages/getAction/getAction",
-    "pages/send/send",
-    "pages/getPDF/getPDF"
+    "pages/send/send"
   ],
   "window": {
     "backgroundTextStyle": "light",

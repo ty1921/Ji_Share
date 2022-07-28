@@ -16,6 +16,15 @@
         <van-col span="24"> 收货人员：{{info.col5}}（{{info.col8}}）  </van-col>     
         <van-col span="24"> 收货公司：{{info.col6}}   </van-col>   
         <van-col span="24"> 收货地址：{{info.col7}}   </van-col>   
+        <van-col span="24"> 
+         
+          <view class="pic_box" wx:if="arr_images" >  
+              <view wx:for="{{arr_images}}" wx-for-index="index" wx-for-item="item">
+                  <image class="img" src="{{item}}" bindtap="preview"></image>
+              </view> 
+          </view>
+
+        </van-col>   
     </van-row>
  
   <van-divider

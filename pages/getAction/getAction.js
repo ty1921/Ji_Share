@@ -27,6 +27,7 @@ Page({
       order_id: id,
       path:"/pages/getLogin/getLogin?id=" + id,
       title:"收货成功，请收货！",
+      arr_images:[],
     })
 
     this.getData(id)
@@ -150,13 +151,33 @@ Page({
           btn: '已收货'
         })
       }
+
+      //图片的还原出来
+      let str_img = res.data.col10
+      if( str_img && str_img.length > 10 ){
+        let arr_images = str_img.split('|')        
+        console.log( arr_images )
+
+        this.setData({
+          arr_images: arr_images,
+        })
+      }
     })
   },
   viewPdf(){
     wx.redirectTo({
       url: '/pages/getPDF/getPDF?order_id=' + this.data.order_id
     })
-  }
+  },
+  //预览图片，放大预览
+  preview(event) {
+    console.log(event.currentTarget.dataset.src)
+    let currentUrl = event.currentTarget.dataset.src
+    wx.previewImage({
+      current: currentUrl, // 当前显示图片的http链接
+      urls: this.data.arr_images // 需要预览的图片http链接列表
+    })
+  },
 
 
 })

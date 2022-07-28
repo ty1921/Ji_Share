@@ -86,3 +86,11 @@
   background-color: var(--cell-background-color,#eee);
   border: 1px solid darkgrey;
 }
+
+.img{
+  display: block;
+  /* width: 49%; */
+  width: 140rpx;
+  height: 170rpx;
+  border:1px solid grey;
+} 
