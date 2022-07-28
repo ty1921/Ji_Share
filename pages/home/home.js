@@ -88,9 +88,40 @@ Page({
     console.log(e.currentTarget)
     const order_id = e.currentTarget.dataset.id;
     console.log(order_id)
-    wx.redirectTo({
-        url: '/pages/viewPdf/viewPdf?order_id=' + order_id
+
+    this.openFile(order_id)
+    // wx.redirectTo({
+    //     url: '/pages/viewPdf/viewPdf?order_id=' + order_id
+    // })
+  },
+  
+  openFile(order_id) {
+    let url = 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + order_id
+
+    if (!(url && url.length)) {
+        return;
+    }
+    wx.showLoading("文件加载中...");
+    wx.downloadFile({
+        url: url,
+        success: (res) => {
+            if (res.tempFilePath) {
+                wx.openDocument({
+                    filePath: res.tempFilePath,
+                    fail: (err) => {
+                        console.error(err);
+                    },
+                    complete: () => {
+                        wx.hideLoading();
+                    }
+                })
+            }
+        },
+        fail: (err) => {
+            console.error(err);
+            wx.hideLoading();
+        }
     })
-  }
+  },
  
 })

@@ -23,9 +23,12 @@ Page({
       id=3
     }
 
-    this.setData({
-      pdf: 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + id
-    })
+  
+    // this.setData({
+    //   pdf: url
+    // })
+
+    this.openFile(url)
 
     console.log('url=',this.data.pdf)
 
@@ -34,53 +37,31 @@ Page({
     }, 3000)
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  openFile(url) {
+    if (!(url && url.length)) {
+        return;
+    }
+    wx.showLoading("文件加载中...");
+    wx.downloadFile({
+        url: url,
+        success: (res) => {
+            if (res.tempFilePath) {
+                wx.openDocument({
+                    filePath: res.tempFilePath,
+                    fail: (err) => {
+                        console.error(err);
+                    },
+                    complete: () => {
+                        wx.hideLoading();
+                    }
+                })
+            }
+        },
+        fail: (err) => {
+            console.error(err);
+            wx.hideLoading();
+        }
+    })
+}
+ 
 })
