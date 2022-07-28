@@ -24,7 +24,7 @@ Page({
     }
 
     this.setData({
-      pdf: 'http://42.193.249.42/backend/PDF/examples/example_048.php?order_id=' + id
+      pdf: 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + id
     })
 
     console.log('url=',this.data.pdf)
