@@ -84,7 +84,9 @@ Page({
     //   })
     // }
   },
-  viewPdf(order_id){
+  viewPdf(e){
+    console.log(e.currentTarget)
+    const order_id = e.currentTarget.dataset.id;
     console.log(order_id)
     wx.redirectTo({
         url: '/pages/viewPdf/viewPdf?order_id=' + order_id
