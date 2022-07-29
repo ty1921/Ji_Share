@@ -18,7 +18,7 @@
             <van-col span="24" wx:if="item.from_images" >  
               <view class="pic_box">  
                   <view wx:for="{{item.from_images}}" wx-for-index="index" wx-for-item="item">
-                      <image class="img" src="{{item}}" bindtap="preview"></image>
+                      <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
                   </view>
               </view>
             </van-col>   
@@ -45,7 +45,7 @@
             <van-col span="24" wx:if="item.to_images" >  
               <view class="pic_box">
                   <view wx:for="{{item.to_images}}" wx-for-index="index" wx-for-item="item">
-                      <image class="img" src="{{item}}" bindtap="preview2"></image>
+                      <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
                   </view>
               </view>
             </van-col>   
@@ -56,6 +56,11 @@
     </view>
   </van-tab>
 </van-tabs>
+
+
+  <!-- 通用错误 -->
+  <view class="{{emptyData}}"> <van-empty description="暂无数据" /> </view>
+  
  
  
 

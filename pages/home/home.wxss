@@ -94,3 +94,7 @@
   height: 170rpx;
   border:1px solid grey;
 } 
+
+.hide{
+  display: none;
+}

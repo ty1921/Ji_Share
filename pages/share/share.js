@@ -24,7 +24,7 @@ Page({
     this.setData({
       order_id: id,
       path:"/pages/getLogin/getLogin?order_id=" + id,
-      title:"发货成功，请收货",
+      title:"发货成功，请点击确认",
     })
 
     this.getData(id)

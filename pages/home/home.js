@@ -9,6 +9,9 @@ Page({
     active: 0,
     active_tab: 0,
     activeName: '1',
+    emptyData: 'hide',
+    arr_img: [],
+    arr_index: 0,
   },
 
   /**
@@ -40,10 +43,10 @@ Page({
     }).then(res => {
       const data = res.data
       if( type == 1 ){
-        this.setData({ list: res.data,  })
+        this.setData({ list: res.data, emptyData: 'hide',  })
       }
       else{
-        this.setData({ list2: res.data,  })
+        this.setData({ list2: res.data, emptyData: '',  })
       }
     })
   },
@@ -130,15 +133,7 @@ Page({
   },
   //预览图片，放大预览
   preview(event) {
-    console.log(event.currentTarget.dataset.src)
-    let currentUrl = event.currentTarget.dataset.src
-    wx.previewImage({
-      current: currentUrl, // 当前显示图片的http链接
-      urls: {currentUrl} // 需要预览的图片http链接列表
-    })
-  },
-  preview2(event) {
-    console.log(event.currentTarget.dataset.src)
+    console.log('获取地址了',event.currentTarget.dataset.src)
     let currentUrl = event.currentTarget.dataset.src
     wx.previewImage({
       current: currentUrl, // 当前显示图片的http链接
