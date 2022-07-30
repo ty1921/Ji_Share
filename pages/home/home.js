@@ -43,10 +43,20 @@ Page({
     }).then(res => {
       const data = res.data
       if( type == 1 ){
-        this.setData({ list: res.data, emptyData: 'hide',  })
+        if( data.length>0 ){
+          this.setData({ list: res.data, emptyData: 'hide',  })
+        }
+        else{
+          this.setData({  emptyData: '',  })
+        }
       }
       else{
-        this.setData({ list2: res.data, emptyData: '',  })
+        if( data.length>0 ){
+          this.setData({ list2: res.data, emptyData: 'hide',  })
+        }
+        else{
+          this.setData({  emptyData: '',  })
+        }
       }
     })
   },

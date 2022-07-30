@@ -200,7 +200,12 @@ Page({
           },2000)
         }
         else{
-          wx.$alert('发货失败！ [code:'+datas.code+']');
+          if( datas.code == 9 ){
+            wx.$alert('Excel除单价和金额外都需填写，请补充全部信息后重试！');
+          }
+          else{
+            wx.$alert('发货失败！ [code:'+datas.code+']');
+          }
         }
         
         // console.log( 'datas=', datas )

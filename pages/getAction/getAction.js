@@ -21,14 +21,21 @@ Page({
   onLoad: function (options) {
     let id = options.order_id
     if(!id || id<= 0 || id == 'undefined'){
-      id=3
+      id=20220730017
+      // wx.showToast({  title: '参数错误，请稍候再试！',  icon: 'none' })
+      // setTimeout(function(){
+      //   wx.redirectTo({
+      //     url: '/pages/home/home'
+      //   })
+      // },2000)
+      // return
     }
     this.setData({
       order_id: id,
       path:"/pages/getLogin/getLogin?id=" + id,
       title:"收货成功，请收货！",
       arr_images:[],
-    })
+    }) 
 
     this.getData(id)
   },
@@ -77,47 +84,7 @@ Page({
     const { file, callback } = event.detail;
     callback(file.type === 'image');
   },
-  
-  submit: function () {
-
-    if( this.data.disabled){
-      return false
-    }
-    let images_str = '';
-
-    if( this.data.fileList && this.data.fileList.length > 0 ){
-      for (let i = 0; i < this.data.fileList.length; i++) {
-        console.log('this.data.fileList[i]',this.data.fileList[i])
-        images_str += this.data.fileList[i]['url'] + '|';        
-      }
-      this.setData({ images_str: images_str });
-    }
-
-    //2 确认收货
-    wx.$get({
-      url: 'order.php?action=Umx', 
-      data: { 
-        order_id: this.data.order_id,
-        openid:  wx.getStorageSync('openid'),
-        tel: wx.getStorageSync('tel'),
-        type: 2,
-        images: this.data.images_str,
-       },
-    }).then(res => {
-      console.log( '返回', res )
-
-        if( res.code == 1 ){
-          this.setData({
-            disabled: true,
-            btn: '已收货'
-          })
-          wx.$alert('收货成功！');
-        }
-        else{
-          wx.$alert('收货失败！ [code:'+datas.code+']');
-        }
-    }) 
-  },
+ 
   deleteImg(e){
     this.data.fileList.splice([e.detail.index],1)
     this.setData({ fileList: this.data.fileList});
@@ -178,6 +145,79 @@ Page({
       urls: this.data.arr_images // 需要预览的图片http链接列表
     })
   },
+
+  
+  fnGetInfo(e){
+    console.log('获取手机号')
+
+    let code = e.detail.code
+    console.log(code)
+ 
+   
+    wx.$get({
+      url: 'wx.php?action=tel&code='+code ,
+    }).then(res2 => {
+      if( res2.code == 1){
+        console.log('wx.php=',res2)
+        wx.setStorageSync('tel',res2.tel)
+            
+        //2 确认收货 
+        this.Submit()
+      }
+      else{
+        wx.showToast({  title: '获取手机号错误，请重试！',  icon: 'none' })
+      }
+      
+    })
+ 
+
+
+    return
+
+  },
+  getPhoneNumber (e) {
+    console.log(e)
+  },
+  Submit(){
+     
+    if( this.data.disabled){
+      return false
+    }
+    let images_str = '';
+
+    if( this.data.fileList && this.data.fileList.length > 0 ){
+      for (let i = 0; i < this.data.fileList.length; i++) {
+        console.log('this.data.fileList[i]',this.data.fileList[i])
+        images_str += this.data.fileList[i]['url'] + '|';        
+      }
+      this.setData({ images_str: images_str });
+    }
+
+    //2 确认收货
+    wx.$get({
+      url: 'order.php?action=Umx', 
+      data: { 
+        order_id: this.data.order_id,
+        openid:  wx.getStorageSync('openid'),
+        tel: wx.getStorageSync('tel'),
+        type: 2,
+        images: this.data.images_str,
+       },
+    }).then(res => {
+      console.log( '返回', res )
+
+        if( res.code == 1 ){
+          this.setData({
+            disabled: true,
+            btn: '已收货'
+          })
+          wx.$alert('收货成功！');
+        }
+        else{
+          wx.$alert('收货失败！ [code:'+datas.code+']');
+        }
+    }) 
+  }
 
 
 })

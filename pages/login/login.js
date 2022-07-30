@@ -90,18 +90,7 @@ return
     console.log('获取手机号')
     console.log(e)
 
-    let tel = this.data.tel
-    let password = this.data.password
 
-  
-    if (!/^1[3-9]\d{9}$/.test(tel)) {
-      wx.showToast({  title: '请输入正确的手机号！',  icon: 'none' })
-      return false;
-    }
-
-    //登录
-    this.loginSubmit()
-    return
 
     let msg = e.detail.errMsg
     
@@ -113,8 +102,11 @@ return
 
     console.log(e.detail.encryptedData)
     console.log(e.detail.iv) 
-    
-    
+  
+    //登录
+    this.loginSubmit()
+    return
+   
 
   },
   getPhoneNumber (e) {

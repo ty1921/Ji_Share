@@ -12,6 +12,12 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   }, 
   onLoad( options ) {
+
+    wx.redirectTo({
+      url: '/pages/getAction/getAction?order_id=' + options.order_id
+    })
+
+    return;
     // if (wx.getUserProfile) {
     //   this.setData({
     //     canIUseGetUserProfile: true
@@ -63,6 +69,7 @@ Page({
   getServerUserInfo: function (e) {
     
   },
+  
   fnGetInfo(e){
     console.log('获取手机号')
     console.log(e)
@@ -79,45 +86,6 @@ Page({
     //登录
     this.loginSubmit()
     return
-
-    let msg = e.detail.errMsg
-    
-    if( msg == "getPhoneNumber:fail user deny" ){
-      wx.$alert('需要授权获取手机号才能发货！')
-      return
-    }
-
-
-    console.log(e.detail.encryptedData)
-    console.log(e.detail.iv) 
-    
-    let that = this
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-                  
-            wx.$get({
-              url: 'wx.php?code='+ e.detail.code +'&encryptedData=' + encodeURIComponent(e.detail.encryptedData) + '&iv=' + e.detail.iv ,
-            }).then(res => {
-              console.log('getTel')
-              
-              let tel = res.data.phone_info.phoneNumber
-              if( !tel ){
-                tel = res.data.phone_info.purePhoneNumber
-              }
-
-              //存储手机
-              wx.setStorageSync('to_tel', tel)
-
-              //登录
-              this.loginSubmit()
-
-            })
-        }
-      }
-    })
-
-    
 
   },
   getPhoneNumber (e) {

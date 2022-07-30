@@ -1,14 +1,15 @@
 {
   "pages": [
     
-    "pages/home/home",
     
-    "pages/getAction/getAction",
+    "pages/home/home",
+    "pages/getAction/getAction", 
 
+    "pages/share/share",
+    
     "pages/getPDF/getPDF",
     
     "pages/viewPdf/viewPdf",
-    "pages/share/share",
     "pages/getLogin/getLogin", 
     "pages/login/login",
     "pages/send/send"
@@ -16,7 +17,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "捷途电子签收系统",
+    "navigationBarTitleText": "捷途轮胎电子签收系统",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

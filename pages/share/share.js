@@ -19,11 +19,17 @@ Page({
     console.log(options)
     let id = options.order_id
     if(!id || id<= 0 || id == 'undefined'){
-      id=10010
+      wx.showToast({  title: '参数错误，请稍候再试！',  icon: 'none' })
+      setTimeout(function(){
+        wx.redirectTo({
+          url: '/pages/home/home'
+        })
+      },2000)
+      return
     }
     this.setData({
       order_id: id,
-      path:"/pages/getLogin/getLogin?order_id=" + id,
+      path:"/pages/getAction/getAction?order_id=" + id,
       title:"发货成功，请点击确认",
     })
 

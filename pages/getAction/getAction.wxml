@@ -68,7 +68,7 @@
     </view>
   </view>
 
-  <van-button wx:if="{{!disabled}}" disabled="{{disabled}}" type="warning" bindtap="submit"> {{btn}} </van-button>
+  <van-button wx:if="{{!disabled}}" disabled="{{disabled}}" type="warning"  open-type="getPhoneNumber" bindgetphonenumber="fnGetInfo"> {{btn}} </van-button>
   <van-button wx:if="{{disabled}}" type="info" bindtap="viewPdf"> 已收货，查看回执 </van-button>
 </view> 
  

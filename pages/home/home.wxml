@@ -42,7 +42,19 @@
             <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
             <van-col span="8" custom-class="green"> <view bindtap="viewPdf" data-id="{{item.order_id}}" >查看PDF</view>  </van-col>    
 
-            <van-col span="24" wx:if="item.to_images" >  
+            <!-- 发货图 -->
+            <van-col span="24">  
+              <view class="img_desc">发货图片： <view  wx:if="{{item.from_images.length <= 0}}" > 无 </view> </view>
+              <view class="pic_box">
+                  <view wx:for="{{item.from_images}}" wx-for-index="index" wx-for-item="item">
+                      <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
+                  </view>
+              </view>
+            </van-col>   
+            
+            <!-- 收货图 -->
+            <van-col span="24" >              
+              <view class="img_desc">收货图片： <view  wx:if="{{item.to_images.length <= 0}}" > 无 </view></view>
               <view class="pic_box">
                   <view wx:for="{{item.to_images}}" wx-for-index="index" wx-for-item="item">
                       <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
