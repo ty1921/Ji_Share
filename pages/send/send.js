@@ -202,9 +202,11 @@ Page({
         else{
           if( datas.code == 9 ){
             wx.$alert('Excel除单价和金额外都需填写，请补充全部信息后重试！');
+            return false
           }
           else{
             wx.$alert('发货失败！ [code:'+datas.code+']');
+            return false
           }
         }
         

@@ -15,8 +15,10 @@
             <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
             <van-col span="8"> 状态：{{item.status==2 ? '完成':'未完成'}} </van-col>    
 
-            <van-col span="24" wx:if="item.from_images" >  
-              <view class="pic_box">  
+            <!-- 发货图 -->
+            <van-col span="24">  
+              <view class="img_desc">发货图片： <view  wx:if="{{item.from_images.length <= 0}}" > 无 </view> </view>
+              <view class="pic_box">
                   <view wx:for="{{item.from_images}}" wx-for-index="index" wx-for-item="item">
                       <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
                   </view>
