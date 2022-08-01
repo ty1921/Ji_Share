@@ -98,6 +98,7 @@ Page({
             if (res.tempFilePath) {
                 wx.openDocument({
                     filePath: res.tempFilePath,
+                    showMenu: true,
                     fail: (err) => {
                         console.error(err);
                     },

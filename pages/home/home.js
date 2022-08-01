@@ -126,6 +126,7 @@ Page({
               
                 wx.openDocument({
                     filePath: newPath,
+                    showMenu: true,
                     fail: (err) => {
                         console.error(err);
                     },
