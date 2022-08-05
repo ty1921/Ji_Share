@@ -238,9 +238,10 @@ Page({
     }
     else if( event.detail == 2 ){      
       wx.redirectTo({
-        url: '/pages/my/my'
+        url: '/pages/Lock/Lock'
       })
     }
+    
   },
 
 })

@@ -90,11 +90,11 @@ Page({
         url: '/pages/send/send'
       })
     }
-    // else if( event.detail == 2 ){      
-    //   wx.redirectTo({
-    //     url: '/pages/my/my'
-    //   })
-    // }
+    else if( event.detail == 2 ){      
+      wx.redirectTo({
+        url: '/pages/Lock/Lock'
+      })  
+    }
   },
   viewPdf(e){
     console.log(e.currentTarget)

@@ -1,0 +1,158 @@
+.box_div, .form, .footer{
+  position: relative;
+  margin: 10px 20px;
+}
+
+.box{
+  width: 100%;
+}
+
+view.input{
+  height: 40px;
+  line-height: 30px;
+}
+
+.submit_btn{
+  margin: 20px 0;
+  border-radius: 35px;
+  width: 33%;
+}
+
+.flex_box{
+  display: flex;
+  justify-content: left;
+  /* width: 49.5%; */
+  /* height: 120px; */
+}
+
+.flex_box navigator{
+  width: 49%;
+  margin: 0.5%;
+  border:1px solid grey;
+}
+
+.left, .right{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* .left{
+  border:1px solid grey;
+  float: left;
+}
+.right{
+  border:1px solid grey;
+  float: right;
+} */
+
+.title_desc{ 
+  font-size: 14px;
+  margin: 15px 0 10px 0;
+  color: rgb(59, 59, 59);
+  /* border:1px solid red; */
+}
+
+
+.title_desc2{
+  margin: 5px 0 10px 0;
+  color: rgb(116, 116, 116);
+}
+
+.btn1_3{
+  float: left;
+  width: 31% !important;
+  margin: 1% !important;
+  margin-top: 30px !important;
+  font-size: 12px;
+  background: rgb(175,136,82) !important;
+}
+
+.btn1_2{
+  float: left;
+  width: 48% !important;
+  margin: 1% !important;
+  margin-top: 30px !important;
+  font-size: 12px;
+  background: rgb(175,136,82) !important;
+}
+
+.close_btn{
+  background: transparent !important;
+  color: rgb(175,136,82) !important;
+  border: 1px solid rgb(175,136,82) !important;
+}
+
+.brand{
+  display: block;
+  /* border:1px solid red; */
+  line-height: 0;
+  float: left;
+  width: 49%;
+  /* height: 30px; */
+}
+.brand .input{
+  margin: 0 !important;
+  padding: 0 16px;
+  line-height: 40px;
+  /* border:1px solid rgb(255, 0, 242); */
+}
+
+.brand.type{
+  margin-left: 2%;
+}
+
+
+.box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: grey;
+  z-index: 99;
+}
+
+.box .msg_box{
+  position: absolute;
+  width: 90%;
+  height: 200px;
+  padding: 5%;
+  left: 5%;
+  top: 30%;
+  background: white;
+  border-radius: 15px;
+  z-index: 100;
+}
+
+.box .title9{
+  text-align: center;
+  font-weight: 600;
+  color: rgb(32, 32, 32);
+  margin: 6px 0 16px 0;
+}
+.box .msg{
+  color: rgb(116, 116, 116);
+  text-align: center;
+  line-height: 30px;
+}
+
+.box .close_btn{
+  margin: 0 !important;
+  position: absolute;
+  width: 90% !important;
+  bottom: 5% !important;
+  left: 5% !important;
+}
+
+.vin_tips{
+  float: right;
+  line-height: 22px;
+  font-size: 12px;
+  color: rgb(175, 124, 124);
+}
+
+.btn_div{
+  margin-bottom: 30px;
+}

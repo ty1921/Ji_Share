@@ -1,8 +1,9 @@
 {
   "pages": [
     
-    
+     
     "pages/home/home",
+    "pages/QA_Manage/QA_Manage",   
     "pages/getAction/getAction", 
 
     "pages/share/share",
@@ -12,7 +13,10 @@
     "pages/viewPdf/viewPdf",
     "pages/getLogin/getLogin", 
     "pages/login/login",
-    "pages/send/send"
+    "pages/send/send",
+     
+    "pages/Lock/Lock",    
+    "pages/QA_Manage_Mx/QA_Manage_Mx"
   ],
   "window": {
     "backgroundTextStyle": "light",

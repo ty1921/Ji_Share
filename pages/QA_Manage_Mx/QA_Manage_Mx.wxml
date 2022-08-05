@@ -1,0 +1,134 @@
+<!--pages/QA_Ask/QA_Ask.wxml-->
+<view class="query">
+  <image class="header" src="{{img_header}}"></image>
+  <image class="logo0" src="{{img_logo0}}"></image>
+</view>
+ 
+<view class="form">
+
+  <form catchsubmit="manageForm" catchreset="manageForm_pre">
+  <view>
+    <text class="title_desc">质保卡号</text>
+    <input type="number" class="input" name="card_no" value="{{card.card_no}}" disabled="disabled"/>
+  </view>
+
+  <view class="pic_div">
+    <text class="title_desc">车辆图片和车架号图片</text>
+
+    <view class="flex_box">
+      <navigator url="/pages/AddPhoto/AddPhoto?from=m&types=1&card_no={{card.card_no}}&src={{pic1}}" hover-class="navigator-hover">
+        <image mode="widthFix" class="left" src="{{pic1}}"></image> 
+      </navigator>
+
+      <navigator url="/pages/AddPhoto/AddPhoto?from=m&types=2&card_no={{card.card_no}}&src={{pic2}}" hover-class="navigator-hover">
+        <image mode="widthFix" class="right" src="{{pic2}}"></image> 
+      </navigator>
+
+      <!-- <view class="clear"></view> -->
+    </view>
+    
+  </view>
+ 
+  <view>
+    <text class="title_desc">车架号 <text class="vin_tips">注意：合法的车架号(VIN)不包含O、I、Q三个字母</text> <text class="clear"></text> </text>
+    <input type="text" class="input" name="vin" placeholder="请输入车架号"  bindinput="fnVinInput" value="{{vin}}" />
+  </view>
+
+  <view>
+    <text class="title_desc">车牌号 <text class="vin_tips">注意：新车临时牌照可暂不录入</text> <text class="clear"></text> </text>
+    <input type="text" maxlength="8" class="input" name="car_num" bindinput="car_numInput" value="{{card.car_num}}" placeholder="请输入车牌号"/>
+  </view>
+
+  <view>
+    <text class="title_desc">手机号</text>
+    <input type="number" maxlength="11" class="input" name="tel" bindinput="telInput" value="{{card.tel}}" disabled="disabled" />
+  </view>
+
+  <view>
+    <text class="title_desc">安装/收货日期</text>
+    <text class="title_desc title_desc2">如果是京东发货，请填写顾客签收的日期</text>
+      <picker mode="date" value="{{date}}" start="2022-01-01" end="2032-01-01" bindchange="bindDateChange">
+        <view class="input">
+          {{date || '请选择'}}
+        </view>
+      </picker>
+  </view>
+
+  <view>
+    <text class="title_desc">汽车品牌型号</text>
+    
+      <picker class="brand" bindchange="PickerChangeBrand" value="{{channel}}" range="{{array_brand}}">
+    　　<view class="input">
+        {{ brand_select || '请选择品牌'}}
+        </view>
+      </picker>
+
+      <picker class="brand type" bindchange="PickerChangeType" value="{{channel}}" range="{{array_type}}">
+    　　<view class="input">
+        {{ type_select || '请选择型号'}}
+        </view>
+      </picker>
+
+      <view class="clear"></view>
+
+      
+      <!-- 默认隐藏，选择其他品牌时显示 -->
+      <input type="text" maxlength="16" class="input {{brand_hide}}" name="other" bindinput="fnOtherInput" value="{{brand_other}}" placeholder="请输入具体的品牌和车型" />
+
+  </view>
+
+  <view>
+    <text class="title_desc">产品</text>
+    <!-- <picker bindchange="PickerChange2" value="{{product}}" range="{{multiArray2}}"> -->
+      <picker mode="multiSelector" bindchange="PickerChange" bindcolumnchange="PickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"> 
+        <view class="input">
+          {{product_select || '请选择产品'}}
+        </view>
+      </picker>    
+  </view> 
+
+  <view>
+    <text class="title_desc">购买渠道</text>
+    <picker bindchange="PickerChange3" value="{{channel}}" range="{{array_channel}}">
+        <view class="input">
+          {{ channel_select || '请选择购买渠道'}}
+        </view>
+      </picker>
+
+      <!-- 默认隐藏，选择其他品牌时显示 -->
+      <input type="text" maxlength="16" class="input {{channel_hide}}" bindinput="fnOther2Input" value="{{channel_other}}" placeholder="{{channel_tips}}" />
+
+  </view>
+
+  <view wx:if="{{ new < 1 }}">
+    <view class="btn_div">
+      <button form_type="submit2" class="submit_btn btn1_3 close_btn" type="primary" plain="true" bindtap="fnClose" >关闭</button>
+      <button form_type="submit2" class="submit_btn btn1_3" type="primary" formType="reset">保存</button>
+      <button form_type="submit2" class="submit_btn btn1_3" type="primary" formType="submit" >生成质保卡</button>
+      <view class="clear">  </view>
+    </view>
+  </view>
+
+  <view wx:if="{{ new == 1 }}">
+    <view class="btn_div">
+      <button form_type="submit2" class="submit_btn btn1_2 close_btn" type="primary" plain="true" bindtap="fnClose" >关闭</button>
+      <button form_type="submit2" class="submit_btn btn1_2" type="primary" formType="submit" >更新质保卡</button>
+      <view class="clear">  </view>
+    </view>
+  </view>
+
+</form>
+
+
+<!-- 全屏弹窗 -->
+<view class="box {{box_hide}}">
+  <view class="msg_box">
+    <view class="title9">{{box_title}}</view>
+    <text class="msg">{{box_msg}}</text>
+    <button class="submit_btn btn1_3 close_btn" type="primary" plain="true" bindtap="fnClose" >确定</button>
+  </view>
+</view>
+
+</view>
+
+

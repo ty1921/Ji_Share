@@ -1,0 +1,9 @@
+<!--pages/Lock/Lock.wxml-->
+
+
+
+<view style="position: absolute; width: 100%;height: 200px;bottom: 350px;left: 0;">
+
+<input style="text-align: center;" auto-focus type="text" maxlength="8" class="input" bindinput="fn2Input" placeholder="请输入管理密码以继续" />
+
+</view>

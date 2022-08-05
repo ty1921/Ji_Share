@@ -60,7 +60,8 @@
   bind:change="onChangeTab"
 >
   <van-tabbar-item icon="home-o">首页</van-tabbar-item>  
-  <van-tabbar-item icon="guide-o">发货</van-tabbar-item>
+  <van-tabbar-item icon="guide-o">发货</van-tabbar-item>  
+  <van-tabbar-item icon="setting-o">管理</van-tabbar-item>
   <!-- <van-tabbar-item icon="user-o">我的</van-tabbar-item> -->
 </van-tabbar> 
 

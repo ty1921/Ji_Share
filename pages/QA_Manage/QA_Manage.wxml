@@ -3,18 +3,18 @@
 <view class="data_box">
 
 <van-tabs active="{{ active }}" bind:change="onChangeNav" type="card" color="00ffff">
-  <van-tab title="未收货" >
+  <van-tab title="删除订单" >
     <view >
       <van-collapse accordion value="{{ activeName }}" bind:change="onChange2">
         <van-collapse-item title="单号：{{item.order_id}}" name="{{index}}" wx:for="{{list}}" wx-for-index="index" wx-for-item="item" >
           <van-row custom-class="mx_box"> 
-            <van-col span="14" > 发货：{{item.created_time}}  </van-col>               
+            <van-col span="14" > 发货：{{item.created_time}}  </van-col>        
+            <van-col span="10" > <van-button plain type="primary" custom-class="del_btn" bindtap="fnDel" data-order="{{item.order_id}}">删除 ×</van-button>  </van-col>                   
             <van-col span="24" > 物流公司：{{item.to_company}}  </van-col>  
             <van-col span="24"> 收货地址：{{item.to_addr}}（{{item.to_tel}}）  </van-col>     
             <van-col span="24"> 收货公司：{{item.to_company}}   </van-col>   
             <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
             <van-col span="8"> 状态：{{item.status==2 ? '完成':'未完成'}} </van-col>    
-
             <!-- 发货图 -->
             <van-col span="24">  
               <view class="img_desc">发货图片： <view  wx:if="{{item.from_images.length <= 0}}" > 无 </view> </view>
@@ -25,50 +25,22 @@
               </view>
             </van-col>   
 
-          </van-row>  
-        </van-collapse-item>
-      </van-collapse>
-    </view>
-  </van-tab>
-
-  <van-tab title="已收货">
-    <view >
-      <van-collapse accordion value="{{ activeName }}" bind:change="onChange2">
-        <van-collapse-item title="单号：{{item.order_id}}" name="{{index}}" wx:for="{{list2}}" wx-for-index="index" wx-for-item="item" >
-          <van-row custom-class="mx_box"> 
-            <van-col span="16" > 发货：{{item.created_time}}  </van-col>      
-            <van-col span="8"> 状态：{{item.status==2 ? '完成':'未完成'}} </van-col>             
-            <van-col span="24" > 物流公司：{{item.to_company}}  </van-col>  
-            <van-col span="24"> 收货地址：{{item.to_addr}}（{{item.to_tel}}）  </van-col>     
-            <van-col span="24"> 收货公司：{{item.to_company}}   </van-col>   
-            <van-col span="16"> 收货时间：{{item.to_date==null ? '—':item.to_date}}   </van-col>             
-            <van-col span="8" custom-class="green"> <view bindtap="viewPdf" data-id="{{item.order_id}}" >查看PDF</view>  </van-col>    
-
             <!-- 发货图 -->
             <van-col span="24">  
-              <view class="img_desc">发货图片： <view  wx:if="{{item.from_images.length <= 0}}" > 无 </view> </view>
-              <view class="pic_box">
-                  <view wx:for="{{item.from_images}}" wx-for-index="index" wx-for-item="item">
-                      <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
-                  </view>
-              </view>
-            </van-col>   
-            
-            <!-- 收货图 -->
-            <van-col span="24" >              
-              <view class="img_desc">收货图片： <view  wx:if="{{item.to_images.length <= 0}}" > 无 </view></view>
+              <view class="img_desc">收货图片： <view  wx:if="{{item.to_images.length <= 0}}" > 无 </view> </view>
               <view class="pic_box">
                   <view wx:for="{{item.to_images}}" wx-for-index="index" wx-for-item="item">
                       <image class="img" src="{{item}}" bindtap="preview" data-src="{{item}}"></image>
                   </view>
               </view>
             </van-col>   
-
+   
           </van-row>  
         </van-collapse-item>
       </van-collapse>
     </view>
   </van-tab>
+ 
 </van-tabs>
 
 
@@ -89,7 +61,7 @@
 
 <!-- 底部导航 -->
 <van-tabbar
-  active="{{ active_tab }}"
+  active="2" 
   active-color="#03a9f4"
   inactive-color="#000"
   bind:change="onChangeTab"
