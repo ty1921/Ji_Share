@@ -12,6 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if( !options.order_id ){
+      options.order_id = 20220917003
+    }
     console.log(options) 
     this.setData({
       order_id: options.order_id
@@ -99,6 +102,7 @@ Page({
                 wx.openDocument({
                     filePath: res.tempFilePath,
                     showMenu: true,
+                    fileType: "pdf",
                     fail: (err) => {
                         console.error(err);
                     },
@@ -112,6 +116,23 @@ Page({
             console.error(err);
             wx.hideLoading();
         }
+    })
+  },
+
+  // 点击复制
+  fnCopyUrl:function(e){
+    let order_id = this.data.order_id
+    let url = 'https://joytour-tyre.com/backend/PDF/examples/example_048.php?order_id=' + order_id
+    wx.setClipboardData({
+      data: url, //这个是要复制的数据
+      success (res) {
+        wx.getClipboardData({
+          success (res) {
+            wx.showToast({  title: '复制成功，请粘贴到浏览器中使用！',  icon: 'none' })
+            console.log(res.data) // data
+          }
+        })
+      }
     })
   },
 
